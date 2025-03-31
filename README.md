@@ -60,17 +60,8 @@ Here's what happens:
 1. Sunlight enters the Earth's atmosphere and contains all the colors of the visible spectrum (red, orange, yellow, green, blue, indigo, and violet).
 2. When sunlight encounters a gas molecule, such as nitrogen or oxygen, it scatters in all directions.
 3. The shorter (blue) wavelengths are scattered more than the longer (red) wavelengths because they interact more strongly with the smaller gas molecules.
-4. As a result, the blue light is dispersed throughout the atmosphere, giving the sky its blue appearance.
-
-This effect is known as Rayleigh scattering, named after the British physicist Lord Rayleigh, who first described it in the late 19th century. It's also responsible for the colorful sunsets we see when sunlight passes through more particles in the atmosphere.
-
-So, to summarize, the sky appears blue because of the scattering of sunlight by tiny gas molecules in the Earth's atmosphere, which favors shorter wavelengths like blue over longer wavelengths like red.
-
-Do you have any other questions about this topic?*
-
-> - With *Qwen*: *The sky appears blue because of the way Earth's atmosphere scatters sunlight in all directions. Sunlight is made up of different colors that correspond to different wavelengths. When sunlight enters the Earth's atmosphere, the shorter wavelength colors (blue and violet) are scattered by gases and particles in the air much more than the longer wavelength colors (red, orange, and yellow). 
-
-However, our eyes are more sensitive to blue light, and there is a lot less natural violet light, so we predominantly perceive the sky as being blue. At sunrise or sunset, you might see reds and oranges because by this time, most of the shorter wavelengths have been scattered out, leaving the longer wavelengths to reach your eyes directly.*
+4. As a result, the blue light is dispersed throughout the atmosphere, giving the sky its blue appearance. This effect is known as Rayleigh scattering, named after the British physicist Lord Rayleigh, who first described it in the late 19th century. It's also responsible for the colorful sunsets we see when sunlight passes through more particles in the atmosphere. So, to summarize, the sky appears blue because of the scattering of sunlight by tiny gas molecules in the Earth's atmosphere, which favors shorter wavelengths like blue over longer wavelengths like red. Do you have any other questions about this topic?* 
+> - With *Qwen*: *The sky appears blue because of the way Earth's atmosphere scatters sunlight in all directions. Sunlight is made up of different colors that correspond to different wavelengths. When sunlight enters the Earth's atmosphere, the shorter wavelength colors (blue and violet) are scattered by gases and particles in the air much more than the longer wavelength colors (red, orange, and yellow). However, our eyes are more sensitive to blue light, and there is a lot less natural violet light, so we predominantly perceive the sky as being blue. At sunrise or sunset, you might see reds and oranges because by this time, most of the shorter wavelengths have been scattered out, leaving the longer wavelengths to reach your eyes directly.*
 
 ## Run the experiment
 
