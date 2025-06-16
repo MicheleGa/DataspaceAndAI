@@ -1,3 +1,9 @@
 venv
 __pycache__
-data/mimic-iii-clinical-database-demo-1.4
+
+# Ignore everything in data/
+data/*
+
+# But not JSON or CSV files in data/
+!data/*.json
+!data/*.py
