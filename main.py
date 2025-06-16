@@ -1,70 +1,162 @@
 import os
 import argparse
-
+import json
+import pandas as pd
 from sentence_transformers import SentenceTransformer
 
 from model.interface import OLLAMA
-from utils.helpers import load_json, count_keys_per_level, get_json_embedding
+from utils.helpers import count_keys_per_level, get_json_embedding
 from utils.metrics import calculate_structure_similarity, calculate_semantic_similarity
 
 
 def main(args):
     
+    # List of JSON file paths to process
+    json_file_names = ['aurora_db.json', 'mimic_iii_db.json', 'vital_db.json']
+    original_json_messages = [] # This will store dictionaries
 
-    # Load json from the dataset folder
-    first_json_message = load_json(path=os.path.join(args.dataset_folder, 'first_json.json'))
-    second_json_message = load_json(path=os.path.join(args.dataset_folder, 'second_json.json'))
-    third_json_message = load_json(path=os.path.join(args.dataset_folder, 'third_json.json'))
+    # Load JSONs from the dataset folder based on the list of file names
+    print("Loading JSON messages...")
+    for file_name in json_file_names:
+        json_path = os.path.join(args.dataset_folder, file_name)
+        with open(json_path, 'r') as f:
+            message = json.load(f)
+        original_json_messages.append(message)
+        print(f"Loaded {file_name}")
     
-    # Structural similarity (based on the number of keys per nesting level)    
-    dict1 = count_keys_per_level(first_json_message)
-    dict2 = count_keys_per_level(second_json_message)
-    dict3 = count_keys_per_level(third_json_message)
+    num_jsons = len(original_json_messages)
+    embedding_model = SentenceTransformer(args.embedding_model_name)
+    
+    ## ---- Initial Structure/Semantic Similarity Analysis ----
+    print("\n## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----")
+    
+    # Pass dictionaries directly to count_keys_per_level
+    original_dicts_per_level = [count_keys_per_level(msg) for msg in original_json_messages] # MODIFIED: pass dict directly
+    
+    # Assuming get_json_embedding can also handle a dictionary by converting it internally
+    original_embeddings = [get_json_embedding(msg, embedding_model) for msg in original_json_messages] 
 
-    similarity1_2 = calculate_structure_similarity(dict1, dict2)
-    similarity1_3 = calculate_structure_similarity(dict1, dict3)
-    similarity2_3 = calculate_structure_similarity(dict2, dict3)
+    # Save results to a dict
+    initial_similarities = {
+        'structure': [],
+        'semantic': [],
+        'x': [],
+        'y': []
+    }
+    for i in range(num_jsons):
+        for j in range(i + 1, num_jsons):
+            # Structural similarity
+            structure_sim = calculate_structure_similarity(original_dicts_per_level[i], original_dicts_per_level[j])
+            print(f"Key Structure Similarity between JSON {i+1} ({json_file_names[i]}) and JSON {j+1} ({json_file_names[j]}): {structure_sim:.4f}")
 
-    print(f"Key Structure Similarity between JSON 1 and JSON 2: {similarity1_2:.4f}")
-    print(f"Key Structure Similarity between JSON 1 and JSON 3: {similarity1_3:.4f}")
-    print(f"Key Structure Similarity between JSON 2 and JSON 3: {similarity2_3:.4f}")
-    
-    # Semantic similarity (based on JSON as a bag of words)
-    model = SentenceTransformer(args.embedding_model_name)
-    
-    embedding1 = get_json_embedding(first_json_message, model)
-    embedding2 = get_json_embedding(second_json_message, model)
-    embedding3 = get_json_embedding(third_json_message, model)
+            # Semantic similarity
+            semantic_sim = calculate_semantic_similarity(original_embeddings[i], original_embeddings[j])
+            print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) and JSON {j+1} ({json_file_names[j]}): {semantic_sim:.4f}")
+            
+            # Store the results
+            initial_similarities['structure'].append(structure_sim)
+            initial_similarities['semantic'].append(semantic_sim)
+            initial_similarities['x'].append(json_file_names[i])
+            initial_similarities['y'].append(json_file_names[j])
 
-    similarity1_2 = calculate_semantic_similarity(embedding1, embedding2)
-    similarity1_3 = calculate_semantic_similarity(embedding1, embedding3)
-    similarity2_3 = calculate_semantic_similarity(embedding2, embedding3)
+    # Create a DataFrame for better visualization and save it
+    print("\nSaving initial similarity results to a DataFrame...")
+    df = pd.DataFrame(initial_similarities)
+    df.to_csv(os.path.join(args.figs_folder, 'initial_similarity_results.csv'), index=False)
+    
+    ## ---- AI Agent JSON Harmonization ----
+    print("\n## ---- AI Agent JSON Harmonization ----")
+    ollama_agent = OLLAMA(model_name=args.model_name)
 
-    print(f"Semantic Similarity between JSON 1 and JSON 2: {similarity1_2:.4f}")
-    print(f"Semantic Similarity between JSON 1 and JSON 3: {similarity1_3:.4f}")
-    print(f"Semantic Similarity between JSON 2 and JSON 3: {similarity2_3:.4f}")
+    harmonized_response_str = None # This will store the final harmonized JSON string received from OLLAMA
+    
+    # Loop through all JSON messages sequentially for harmonization
+    for i, current_json_message_dict in enumerate(original_json_messages): # current_json_message_dict is a dict
+        print(f"Processing JSON message {i+1} ({json_file_names[i]})...")
+        # Call the AI agent with the current JSON message, which must be a JSON string
+        response_from_ollama = ollama_agent.predict(user_data=json.dumps(current_json_message_dict)) # OLLAMA expects a JSON string
+        
+        # Print the response for each step
+        if response_from_ollama:
+            harmonized_response_str = response_from_ollama 
+            
+            # Dump the intermediate harmonized response to a JSON file
+            harmonized_json_path = os.path.join(args.dataset_folder, f'harmonized_schema_{i+1}.json')
 
-    # Instantiate the interface that will call the OLLAMA model running in local (some port on local host 127.0.0.1)
-    model = OLLAMA(model_name=args.model_name)
+            # COnvert to dict for saving
+            try:
+                harmonized_response_dict = json.loads(harmonized_response_str)
+            except json.JSONDecodeError:
+                print(f"Error: Response from {args.model_name} is not a valid JSON. Skipping saving for JSON message {i+1}.")
+                exit()
+
+            with open(harmonized_json_path, 'w') as f:
+                json.dump(harmonized_response_dict, f, indent=2)
+            print(f"Harmonized schema saved to {harmonized_json_path}")
+        else:
+            print(f'No valid response provided by {args.model_name} for JSON message {i+1}.')
+            
     
-    # Build the prompt
-    prompt = f'Given the following JSON message {first_json_message} and the second one {second_json_message}, can you generate an harmonized JSON schema out of them?'
+    ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
+    # After the loop, if we have a harmonized_response_str, perform the final similarity analysis
+    if harmonized_response_str:
+        print("\n## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----")
+        
+        # Parse the final harmonized response string back to a dict for structural analysis
+        try:
+            final_harmonized_dict = json.loads(harmonized_response_str)
+        except json.JSONDecodeError:
+            print("Error: Final harmonized response is not a valid JSON. Cannot perform similarity analysis.")
+            exit()
+
+        # Save JSON
+        final_harmonized_json_path = os.path.join(args.dataset_folder, 'final_harmonized_schema.json')
+        with open(final_harmonized_json_path, 'w') as f:
+            json.dump(final_harmonized_dict, f, indent=2)
+            
+        # Pass the dictionary directly to count_keys_per_level
+        dict_gen = count_keys_per_level(final_harmonized_dict) # MODIFIED: pass dict here
+        
+        # Pass the dictionary to get_json_embedding as well
+        embedding_gen = get_json_embedding(final_harmonized_dict, embedding_model) # MODIFIED: pass dict here
+        
+        # Save results to a dict
+        final_similarities = {
+            'structure': [],
+            'semantic': [],
+            'x': [],
+            'y': []
+        }
+        for i, _ in enumerate(original_json_messages):
+            # Structural similarity
+            structure_similarity_gen = calculate_structure_similarity(original_dicts_per_level[i], dict_gen)
+            print(f"Key Structure Similarity between JSON {i+1} ({json_file_names[i]}) and Final Harmonized JSON: {structure_similarity_gen:.4f}")
+            
+            # Semantic similarity
+            semantic_similarity_gen = calculate_semantic_similarity(original_embeddings[i], embedding_gen)
+            print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) and Final Harmonized JSON: {semantic_similarity_gen:.4f}")
+            
+            # Store the results
+            final_similarities['structure'].append(structure_similarity_gen)
+            final_similarities['semantic'].append(semantic_similarity_gen)
+            final_similarities['x'].append(json_file_names[i])
+            final_similarities['y'].append('Final Harmonized JSON')
+            
+        # Create a DataFrame for final similarity results and save it
+        print("\nSaving final similarity results to a DataFrame...")
+        final_df = pd.DataFrame(final_similarities)
+        final_df.to_csv(os.path.join(args.figs_folder, 'final_similarity_results.csv'), index=False)
+        print("Final similarity results saved to final_similarity_results.csv in the figures folder.")
     
-    # Call the AI agent
-    response = model.predict(data=prompt)
-    
-    # Print the response if present
-    if response:
-        print(response)
     else:
-        print(f'No repsonse provided by {args.model_name}')
-    
+        print("No valid harmonized response generated for final similarity analysis.")
 
 def parseargs():
     parser = argparse.ArgumentParser(description="Dataspace and AI: Schema Harmonization")
     
     parser.add_argument('--dataset_folder', default='./data', type=str, help='path to the dataset folder')
-    parser.add_argument('--model_name', default='qwen2.5', type=str, help='LLM to adpot for the schema harmonization')
+    parser.add_argument('--figs_folder', default='./figs', type=str, help='path to the figures folder')
+    parser.add_argument('--model_name', default='mistral', type=str, help='LLM to adpot for the schema harmonization')
     parser.add_argument('--embedding_model_name', default='all-MiniLM-L6-v2', type=str, help='model to employ to produce JSON embeddings')
     
     args = parser.parse_args()

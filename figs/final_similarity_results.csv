@@ -1,0 +1,4 @@
+structure,semantic,x,y
+0.5774042950513539,0.2832662,aurora_db.json,Final Harmonized JSON
+0.19321623258631135,0.28945124,mimic_iii_db.json,Final Harmonized JSON
+0.3444213444213444,0.33841205,vital_db.json,Final Harmonized JSON

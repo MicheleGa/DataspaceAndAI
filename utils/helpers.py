@@ -1,10 +1,3 @@
-import json
-
-def load_json(path : str = '', mode : str = 'r'):
-    with open(path, mode) as f:
-        return json.load(f)
-    
-
 def count_keys_per_level(json_data, level=0, key_counts=None):
     """
     Recursively navigates a JSON-like data structure and counts the number of
@@ -22,7 +15,7 @@ def count_keys_per_level(json_data, level=0, key_counts=None):
     """
     if key_counts is None:
         key_counts = {}
-
+        
     if isinstance(json_data, dict):
         key_counts[level] = key_counts.get(level, 0) + len(json_data.keys())
         for value in json_data.values():
@@ -30,9 +23,10 @@ def count_keys_per_level(json_data, level=0, key_counts=None):
     elif isinstance(json_data, list):
         for item in json_data:
             count_keys_per_level(item, level + 1, key_counts)
+            
     # For primitive types (string, number, boolean, None), we don't have keys,
     # so we simply return and don't increment the level further.
-
+    
     return key_counts
 
 

@@ -1,0 +1,201 @@
+{
+    "subject_id": "42367",
+    "row_id": 134694,
+    "hadm_id": 142345,
+    "chartdate": "2164-10-23 00:00:00",
+    "charttime": "2164-10-23 15:30:00",
+    "spec": {
+        "itemid": 70012,
+        "type_desc": "BLOOD CULTURE"
+    },
+    "org": {
+        "itemid": 80155.0,
+        "name": "STAPHYLOCOCCUS, COAGULASE NEGATIVE"
+    },
+    "isolate_num": 2.0,
+    "ab": {
+        "itemid": 90015.0,
+        "name": "VANCOMYCIN"
+    },
+    "dilution": {
+        "text": "2",
+        "comparison": "=",
+        "value": 2.0
+    },
+    "interpretation": "S",
+    "icustay_id": 234989,
+    "itemid": 40055,
+    "value": 39.0,
+    "valueuom": "ml",
+    "storetime": "2171-10-30 20:38:00",
+    "cgid": 15029,
+    "stopped": null,
+    "newbottle": null,
+    "iserror": null,
+    "icd9_code": 1716,
+    "short_title": "Erythem nod tb-oth test",
+    "long_title": "Erythema nodosum with hypersensitivity reaction in tuberculosis, tubercle bacilli not found by bacteriological or histological examination, but tuberculosis confirmed by other methods [inoculation of animals]",
+    "amount": 400.0,
+    "amountuom": "ml",
+    "rate": null,
+    "rateuom": null,
+    "orderid": 2557279,
+    "linkorderid": 2557279,
+    "originalamount": null,
+    "originalamountuom": "ml",
+    "originalroute": "Oral",
+    "originalrate": null,
+    "originalrateuom": null,
+    "originalsite": null,
+    "category": 1,
+    "sectionrange": "99201-99499",
+    "sectionheader": "Evaluation and management",
+    "subsectionrange": "99201-99216",
+    "subsectionheader": "Office/other outpatient services",
+    "codesuffix": null,
+    "mincodeinsubsection": 99201,
+    "maxcodeinsubsection": 99216,
+    "costcenter": "ICU",
+    "cpt": {
+        "cd": 99254,
+        "number": 99254,
+        "suffix": null
+    },
+    "ticket_id_seq": 1,
+    "description": null,
+    "label": "RO",
+    "admittime": "2164-10-23 21:09:00",
+    "dischtime": "2164-11-01 17:15:00",
+    "deathtime": "2126-08-28 18:59:00",
+    "admission": {
+        "type": "EMERGENCY",
+        "location": "EMERGENCY ROOM ADMIT"
+    },
+    "discharge": {
+        "location": "HOME HEALTH CARE",
+        "wardid": 45.0
+    },
+    "insurance": "Medicare",
+    "language": "POLI",
+    "religion": "CATHOLIC",
+    "marital_status": "SEPARATED",
+    "ethnicity": "BLACK/AFRICAN AMERICAN",
+    "edregtime": "2164-10-23 16:43:00",
+    "edouttime": "2164-10-23 23:00:00",
+    "diagnosis": "SEPSIS",
+    "hospital_expire_flag": 0,
+    "has_chartevents_data": 1,
+    "valuenum": 19.0,
+    "flag": "abnormal",
+    "startdate": "2146-07-21 00:00:00",
+    "enddate": "2146-07-22 00:00:00",
+    "drug_name": {
+        "poe": "Pneumococcal Vac Polyvalent",
+        "generic": "PNEUMOcoccal Vac Polyvalent"
+    },
+    "formulary_drug_cd": "PNEU25I",
+    "gsn": 48548.0,
+    "ndc": 6494300,
+    "prod_strength": "25mcg/0.5mL Vial",
+    "dose": {
+        "val_rx": "0.5",
+        "unit_rx": "mL"
+    },
+    "form": {
+        "val_disp": "1",
+        "unit_disp": "VIAL"
+    },
+    "route": "IM",
+    "drg": {
+        "type": "HCFA",
+        "code": 148,
+        "severity": 4.0,
+        "mortality": 4.0
+    },
+    "seq_num": 1,
+    "abbreviation": null,
+    "dbsource": "carevue",
+    "linksto": "chartevents",
+    "unitname": null,
+    "param_type": null,
+    "conceptid": null,
+    "transfertime": "2164-10-23 21:10:15",
+    "prev": {
+        "service": "MED",
+        "careunit": "MICU",
+        "wardid": 52.0
+    },
+    "curr": {
+        "service": "MED",
+        "careunit": "MICU",
+        "wardid": 52.0
+    },
+    "fluid": "BLOOD",
+    "loinc_code": "19991-9",
+    "warning": 0,
+    "error": 0,
+    "resultstatus": null,
+    "gender": "F",
+    "dob": "2094-03-05 00:00:00",
+    "dod": {
+        "hosp": "2165-08-12 00:00:00",
+        "ssn": "2165-08-12 00:00:00"
+    },
+    "expire_flag": 1,
+    "starttime": "2147-10-29 16:45:00",
+    "endtime": "2147-10-29 16:46:00",
+    "ordercategoryname": "14-Oral/Gastric Intake",
+    "secondaryordercategoryname": "Additive (Crystalloid)",
+    "ordercomponenttypedescription": "Main order parameter",
+    "ordercategorydescription": "Bolus",
+    "patientweight": 70,
+    "totalamount": 60.0,
+    "totalamountuom": "ml",
+    "isopenbag": 0,
+    "continueinnextdept": 0,
+    "cancelreason": 0,
+    "statusdescription": "FinishedRunning",
+    "comments": {
+        "editedby": "RN",
+        "canceledby": "RN",
+        "date": "2147-10-20 13:18:00"
+    },
+    "first": {
+        "careunit": "MICU",
+        "wardid": 52
+    },
+    "last": {
+        "careunit": "MICU",
+        "wardid": 52
+    },
+    "intime": "2164-10-23 21:10:15",
+    "outtime": "2164-10-25 12:21:07",
+    "los": 1.6325,
+    "eventtype": "admit",
+    "submit": {
+        "wardid": 7,
+        "careunit": "MICU"
+    },
+    "callout": {
+        "wardid": 1,
+        "service": "MED",
+        "status": "Inactive",
+        "outcome": "Discharged"
+    },
+    "request": {
+        "tele": 1,
+        "resp": 0,
+        "cdiff": 0,
+        "mrsa": 0,
+        "vre": 0
+    },
+    "acknowledge_status": "Acknowledged",
+    "createtime": "2149-05-31 10:44:34",
+    "updatetime": "2149-05-31 10:44:34",
+    "acknowledgetime": "2149-05-31 15:08:04",
+    "outcometime": "2149-05-31 22:40:02",
+    "firstreservationtime": "2130-02-06 10:58:34",
+    "currentreservationtime": "2159-11-20 10:55:25",
+    "location": "Right Femoral.",
+    "locationcategory": "Invasive Venous"
+}

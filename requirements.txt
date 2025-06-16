@@ -1,2 +1,5 @@
 ollama
 sentence-transformers
+pandas
+matplotlib
+seaborn

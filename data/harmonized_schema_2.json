@@ -1,0 +1,67 @@
+{
+  "patient_id": "<patient_id from incoming JSON>",
+  "phase": "<phase from incoming JSON>",
+  "measurement_time": "<measurement_time from incoming JSON>",
+  "drug_name": "<name of the drug from incoming JSON>",
+  "dose": "<dose of the drug from incoming JSON>",
+  "route_of_administration": "<route of administration from incoming JSON>",
+  "frequency": "<frequency of administration from incoming JSON>",
+  "blood_pressure": {
+    "systolic": null,
+    "diastolic": null,
+    "baseline": {
+      "systolic": null,
+      "diastolic": null
+    },
+    "delta": {
+      "systolic": null,
+      "diastolic": null,
+      "arm_angle": null,
+      "beat_length_ekg": null,
+      "heart_rate": null,
+      "pulse_volume": null,
+      "pulse_waveform_file_path": "<pulse waveform file path from incoming JSON>"
+    },
+    "primary": {
+      "systolic": null,
+      "diastolic": null
+    },
+    "secondary": {
+      "systolic": null,
+      "diastolic": null
+    },
+    "consensus": {
+      "systolic_error": null,
+      "diastolic_error": null
+    }
+  },
+  "aurora_size": "<aurora size from incoming JSON>",
+  "fitzpatrick_scale": "<fitzpatrick scale from incoming JSON>",
+  "bp_cuff_arm": "<bp cuff arm from incoming JSON>",
+  "patient_info": {
+    "age": "<age from incoming JSON>",
+    "height": null,
+    "weight": "<weight from incoming JSON>",
+    "gender": "<gender from incoming JSON>",
+    "self_report_htN": null,
+    "high_blood_pressure": null,
+    "coronary_artery_disease": null,
+    "diabetes": null,
+    "arrythmia": null,
+    "previous": {
+      "heart_attack": null,
+      "stroke": null
+    },
+    "heart_failure": null,
+    "aortic_stenosis": null,
+    "valvular_heart_disease": null,
+    "other_cv_diseases": null,
+    "cvd_meds": "<cvd meds from incoming JSON>"
+  },
+  "waveform_file_path": null,
+  "waveforms_generated": null,
+  "n_meas": {
+    "inlab": null,
+    "ambulatory": null
+  }
+}
