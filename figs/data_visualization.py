@@ -35,7 +35,6 @@ def plot_similarity_graph(csv_file_path, save_path='./'):
 
     # Get unique elements for the title
     all_elements = pd.concat([df['x'], df['y']]).unique()
-    num_elements = len(all_elements)
 
     # Set the pastel color palette
     sns.set_palette("pastel")
@@ -58,7 +57,7 @@ def plot_similarity_graph(csv_file_path, save_path='./'):
     # The loop for adding ax.text() is no longer present here.
 
     # Set plot title and labels
-    plt.title(f'Pairwise Structural vs. Semantic Similarity for {num_elements} Elements', fontsize=16)
+    plt.title(f'Pairwise Structural vs. Semantic Similarity', fontsize=16)
     plt.xlabel('Structural Similarity', fontsize=12)
     plt.ylabel('Semantic Similarity', fontsize=12)
 
