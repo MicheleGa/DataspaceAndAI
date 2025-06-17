@@ -1,4 +1,0 @@
-structure,semantic,x,y
-0.40308903694730464,0.11638363,aurora_db.json,mimic_iii_db.json
-0.5485527544351073,0.32970226,aurora_db.json,vital_db.json
-0.509312537855845,0.11349307,mimic_iii_db.json,vital_db.json

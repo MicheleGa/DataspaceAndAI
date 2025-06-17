@@ -1,0 +1,20 @@
+{
+  "id": "string",
+  "demographics": {
+    "age": "int",
+    "sex": "int"
+  },
+  "cardiac_health_indicators": {
+    "resting_heart_rate": "float",
+    "cholesterol_level": "int",
+    "diabetes_status": "bool",
+    "exercise_induced_angina": "bool",
+    "maximum_heart_rate": "int",
+    "physical_activity_level": "bool",
+    "ST_segment_depression": "float",
+    "left_ventricular_hypertrophy_slope": "int"
+  },
+  "cardiac_risk_factors": {
+    "target_cholesterol": "int"
+  }
+}

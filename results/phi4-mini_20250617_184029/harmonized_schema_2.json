@@ -1,0 +1,26 @@
+{
+  "id": "string",
+  "demographics": {
+    "age": "int",
+    "weight": null,
+    "height": null
+  },
+  "medical_conditions": {
+    "anaemia": "bool",
+    "creatinine_phosphokinase": "float",
+    "diabetes": "bool",
+    "ejection_fraction": "int",
+    "high_blood_pressure": "bool",
+    "platelets": "float"
+  },
+  "lab_results": {
+    "serum_creatinine": "float",
+    "serum_sodium": "float"
+  },
+  "vital_status": {
+    "sex": "int",
+    "smoking_history": "bool",
+    "time_of_recording": "int",
+    "death_event_occurred": "bool"
+  }
+}

@@ -1,4 +1,6 @@
 import os
+import shutil
+import argparse
 import pandas as pd
 import json
 
@@ -209,38 +211,50 @@ def simplify_single_key_nesting(data):
     return new_data
 
 
+def process_and_save_database(db_name, output_folder='./json_data'):
+    
+    flat_formats = process_directory(f'{db_name}')
+    
+    # Apply initial nesting logic
+    nested_formats = create_nested_json(flat_formats)
+    
+    # Simplify single-key nested dictionaries recursively
+    final_formats = simplify_single_key_nesting(nested_formats)
+    
+    # Output the final JSON file
+    output_filename = f'{db_name}.json'
+    with open(os.path.join(output_folder, output_filename), 'w') as f:
+        json.dump(final_formats, f, indent=2)
+    
+    # Print the content for verification
+    print(f"\nProcessing complete for {db_name}. JSON file generated: {output_filename}")
+    print(f"\nContent of {output_filename}:")
+    print(json.dumps(final_formats, indent=2))
+
+
+def parseargs():
+    parser = argparse.ArgumentParser(description="Dataspace and AI: Schema Harmonization")
+    
+    parser.add_argument('--output_folder', default='./json_data', type=str, help='path to the output folder where JSONs will be stored')
+    
+    args = parser.parse_args()
+    return args
+
+
 if __name__ == "__main__":
-
-    # Process each specified directory to get flat column metadata
-    dir_one_formats = process_directory('./aurora_db')
-    dir_two_formats = process_directory('./mimic-iii-clinical-database-demo-1.4')
-    dir_three_formats = process_directory('./vital_db')
     
-    # Apply initial nesting logic to the collected metadata
-    nested_aurora_formats = create_nested_json(dir_one_formats)
-    nested_mimic_formats = create_nested_json(dir_two_formats)
-    nested_vital_formats = create_nested_json(dir_three_formats)
-
-    # Apply the simplification logic for single-key nested dictionaries recursively
-    final_aurora_formats = simplify_single_key_nesting(nested_aurora_formats)
-    final_mimic_formats = simplify_single_key_nesting(nested_mimic_formats)
-    final_vital_formats = simplify_single_key_nesting(nested_vital_formats)
+    args = parseargs()
     
-    # Output the final JSON files with the new nested and simplified structure
-    with open('aurora_db.json', 'w') as f:
-        json.dump(final_aurora_formats, f, indent=4)
-
-    with open('mimic_iii_db.json', 'w') as f:
-        json.dump(final_mimic_formats, f, indent=4)
+    # Create output folder: if it exists, delete it with shutil.rmtree, then create a new one
+    if os.path.exists(args.output_folder):
+        shutil.rmtree(args.output_folder)
+    os.makedirs(args.output_folder, exist_ok=True)
     
-    with open('vital_db.json', 'w') as f:
-        json.dump(final_vital_formats, f, indent=4)
-
-    # Print the content of the generated JSON files for verification
-    print("Processing complete. JSON files generated with simplified nesting.")
-    print("\nContent of 'aurora_db.json':")
-    print(json.dumps(final_aurora_formats, indent=4))
-    print("\nContent of 'mimic_iii_db.json':")
-    print(json.dumps(final_mimic_formats, indent=4))
-    print("\nContent of 'vital_db.json':")
-    print(json.dumps(final_vital_formats, indent=4))
+    database_names = [
+        'heart_disease_db',
+        'heart_failure_db',
+        'non_invasive_bp_estimation_db'
+        # Add more database names as needed
+    ]
+    for db_name in database_names:
+        process_and_save_database(db_name, output_folder=args.output_folder)

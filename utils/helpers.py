@@ -1,3 +1,6 @@
+from datetime import datetime
+
+
 def count_keys_per_level(json_data, level=0, key_counts=None):
     """
     Recursively navigates a JSON-like data structure and counts the number of
@@ -79,3 +82,19 @@ def get_json_embedding(json_data, model):
     # embedding = np.mean(embeddings, axis=0) if embeddings.size > 0 else None
 
     return embedding
+
+def generate_run_name(args):
+    """
+    Generates a run name based on the provided arguments.
+
+    Args:
+        args: The argument parser containing the experiment settings.
+
+    Returns:
+        str: A formatted string representing the run name.
+    """
+    if args.experiment_name != '':
+        return f"{args.model_name}_{args.experiment_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    else:
+        return f"{args.model_name}_{datetime.now().strftime('%Y%m%d_%H%M%S')}"
+    

@@ -1,0 +1,11 @@
+{
+  "id": "string",
+  "demographics": {
+    "age": "int",
+    "weight": "int",
+    "height": "int"
+  },
+  "vital_signs": {
+    "data_PPG": "int"
+  }
+}

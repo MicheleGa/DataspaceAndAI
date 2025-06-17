@@ -1,0 +1,8 @@
+{
+  "health_parameters": {
+    "age": "int",
+    "weight": "float",
+    "height": "int",
+    "PPG": "int"
+  }
+}

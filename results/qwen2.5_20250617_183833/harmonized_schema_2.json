@@ -1,0 +1,22 @@
+{
+  "id": "string",
+  "demographics": {
+    "age": "int"
+  },
+  "clinical_data": {
+    "anaemia": "int",
+    "creatinine_phosphokinase": "int",
+    "diabetes": "int",
+    "ejection_fraction": "int",
+    "high_blood_pressure": "int",
+    "platelets": "float",
+    "serum": {
+      "creatinine": "float",
+      "sodium": "int"
+    },
+    "sex": "int",
+    "smoking": "int",
+    "time": "int",
+    "DEATH_EVENT": "int"
+  }
+}

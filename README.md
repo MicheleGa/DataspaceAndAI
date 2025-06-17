@@ -27,7 +27,15 @@ we are going to test different of them which should be downloaded before using t
 ollama pull qwen2.5
 ```
 
-and with *ollama list* and *ollama ps* it is possible to see which OLLAMA models have been downloaded and which ones are currently running.
+and with *ollama list* and *ollama ps* it is possible to see which OLLAMA models have been downloaded and which ones are currently running. We have currently pull:
+
+```bash
+ollama pull llama3.2
+ollama pull qwen2.5
+ollama pull mistral
+ollama pull gemma3
+ollama pull phi4-mini
+```
 
 Then to use it inside python code, we create a python virtualenv using *requirements.txt*. Hence, as usual, we run the following sequence of commands (assuming you already installed Python in your machine, here we are using Python 3.11.4 from Anaconda):
 
@@ -53,14 +61,10 @@ print(response['message']['content'])
 
 > - With *mistral*, you should get: *The sky appears blue because of a phenomenon called Rayleigh scattering. As sunlight passes through Earth's atmosphere, it interacts with molecules and tiny particles in the air, like dust and water droplets. Blue light has shorter wavelengths and gets scattered more than other colors as it travels due to the way its particles are arranged. This scattered blue light is what we see when looking up at the sky. At sunrise or sunset, you may observe the sky in shades of red, orange, pink, and purple - this is due to a different type of scattering called Raman scattering and the way the sunlight interacts with air molecules at specific angles.*
 
-> - With *llama3.2*: *The sky appears blue because of a phenomenon called scattering, which occurs when sunlight interacts with the tiny molecules of gases in the Earth's atmosphere.
-
-Here's what happens:
-
-1. Sunlight enters the Earth's atmosphere and contains all the colors of the visible spectrum (red, orange, yellow, green, blue, indigo, and violet).
-2. When sunlight encounters a gas molecule, such as nitrogen or oxygen, it scatters in all directions.
-3. The shorter (blue) wavelengths are scattered more than the longer (red) wavelengths because they interact more strongly with the smaller gas molecules.
-4. As a result, the blue light is dispersed throughout the atmosphere, giving the sky its blue appearance. This effect is known as Rayleigh scattering, named after the British physicist Lord Rayleigh, who first described it in the late 19th century. It's also responsible for the colorful sunsets we see when sunlight passes through more particles in the atmosphere. So, to summarize, the sky appears blue because of the scattering of sunlight by tiny gas molecules in the Earth's atmosphere, which favors shorter wavelengths like blue over longer wavelengths like red. Do you have any other questions about this topic?* 
+> - With *llama3.2*: *The sky appears blue because of a phenomenon called scattering, which occurs when sunlight interacts with the tiny molecules of gases in the Earth's atmosphere.Here's what happens: 1 Sunlight enters the Earth's atmosphere and contains all the colors of the visible spectrum (red, orange, yellow, green, blue, indigo, and violet).
+2 When sunlight encounters a gas molecule, such as nitrogen or oxygen, it scatters in all directions.
+3 The shorter (blue) wavelengths are scattered more than the longer (red) wavelengths because they interact more strongly with the smaller gas molecules.
+4 As a result, the blue light is dispersed throughout the atmosphere, giving the sky its blue appearance. This effect is known as Rayleigh scattering, named after the British physicist Lord Rayleigh, who first described it in the late 19th century. It's also responsible for the colorful sunsets we see when sunlight passes through more particles in the atmosphere. So, to summarize, the sky appears blue because of the scattering of sunlight by tiny gas molecules in the Earth's atmosphere, which favors shorter wavelengths like blue over longer wavelengths like red. Do you have any other questions about this topic?* 
 > - With *Qwen*: *The sky appears blue because of the way Earth's atmosphere scatters sunlight in all directions. Sunlight is made up of different colors that correspond to different wavelengths. When sunlight enters the Earth's atmosphere, the shorter wavelength colors (blue and violet) are scattered by gases and particles in the air much more than the longer wavelength colors (red, orange, and yellow). However, our eyes are more sensitive to blue light, and there is a lot less natural violet light, so we predominantly perceive the sky as being blue. At sunrise or sunset, you might see reds and oranges because by this time, most of the shorter wavelengths have been scattered out, leaving the longer wavelengths to reach your eyes directly.*
 
 ## Run the experiment

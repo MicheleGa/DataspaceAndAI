@@ -5,14 +5,23 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 
 from model.interface import OLLAMA
-from utils.helpers import count_keys_per_level, get_json_embedding
+from utils.helpers import count_keys_per_level, get_json_embedding, generate_run_name
 from utils.metrics import calculate_structure_similarity, calculate_semantic_similarity
 
 
 def main(args):
     
+    # Run name generation
+    run_name = generate_run_name(args)
+    
+    # Make fodlers for figs and data
+    if not os.path.exists(os.path.join(args.results_folder, run_name)):
+        os.makedirs(os.path.join(args.results_folder, run_name))
+    
+    
+    ## ---- JSON Data Loading ----
     # List of JSON file paths to process
-    json_file_names = ['aurora_db.json', 'mimic_iii_db.json', 'vital_db.json']
+    json_file_names = os.listdir(args.dataset_folder)
     original_json_messages = [] # This will store dictionaries
 
     # Load JSONs from the dataset folder based on the list of file names
@@ -26,6 +35,8 @@ def main(args):
     
     num_jsons = len(original_json_messages)
     embedding_model = SentenceTransformer(args.embedding_model_name)
+    
+    
     
     ## ---- Initial Structure/Semantic Similarity Analysis ----
     print("\n## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----")
@@ -59,10 +70,11 @@ def main(args):
             initial_similarities['x'].append(json_file_names[i])
             initial_similarities['y'].append(json_file_names[j])
 
-    # Create a DataFrame for better visualization and save it
+    # Create a DataFrame for results visualization and analysis
     print("\nSaving initial similarity results to a DataFrame...")
     df = pd.DataFrame(initial_similarities)
-    df.to_csv(os.path.join(args.figs_folder, 'initial_similarity_results.csv'), index=False)
+    df.to_csv(os.path.join(args.results_folder, run_name, f'initial_similarity_results.csv'), index=False)
+    
     
     ## ---- AI Agent JSON Harmonization ----
     print("\n## ---- AI Agent JSON Harmonization ----")
@@ -81,7 +93,7 @@ def main(args):
             harmonized_response_str = response_from_ollama 
             
             # Dump the intermediate harmonized response to a JSON file
-            harmonized_json_path = os.path.join(args.dataset_folder, f'harmonized_schema_{i+1}.json')
+            harmonized_json_path = os.path.join(args.results_folder, run_name, f'harmonized_schema_{i+1}.json')
 
             # COnvert to dict for saving
             try:
@@ -95,6 +107,7 @@ def main(args):
             print(f"Harmonized schema saved to {harmonized_json_path}")
         else:
             print(f'No valid response provided by {args.model_name} for JSON message {i+1}.')
+            
             
     
     ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
@@ -110,7 +123,7 @@ def main(args):
             exit()
 
         # Save JSON
-        final_harmonized_json_path = os.path.join(args.dataset_folder, 'final_harmonized_schema.json')
+        final_harmonized_json_path = os.path.join(args.results_folder, run_name, 'final_harmonized_schema.json')
         with open(final_harmonized_json_path, 'w') as f:
             json.dump(final_harmonized_dict, f, indent=2)
             
@@ -142,10 +155,10 @@ def main(args):
             final_similarities['x'].append(json_file_names[i])
             final_similarities['y'].append('Final Harmonized JSON')
             
-        # Create a DataFrame for final similarity results and save it
+        # Create a DataFrame for final similarity results and analysis
         print("\nSaving final similarity results to a DataFrame...")
         final_df = pd.DataFrame(final_similarities)
-        final_df.to_csv(os.path.join(args.figs_folder, 'final_similarity_results.csv'), index=False)
+        final_df.to_csv(os.path.join(args.results_folder, run_name, f'final_similarity_results.csv'), index=False)
         print("Final similarity results saved to final_similarity_results.csv in the figures folder.")
     
     else:
@@ -154,9 +167,10 @@ def main(args):
 def parseargs():
     parser = argparse.ArgumentParser(description="Dataspace and AI: Schema Harmonization")
     
-    parser.add_argument('--dataset_folder', default='./data', type=str, help='path to the dataset folder')
-    parser.add_argument('--figs_folder', default='./figs', type=str, help='path to the figures folder')
-    parser.add_argument('--model_name', default='mistral', type=str, help='LLM to adpot for the schema harmonization')
+    parser.add_argument('--dataset_folder', default='./data/json_data', type=str, help='path to the dataset folder')
+    parser.add_argument('--results_folder', default='./results', type=str, help='path to the figures folder')
+    parser.add_argument('--experiment_name', default='', type=str, help='name for the experiment')
+    parser.add_argument('--model_name', default='llama3.2', type=str, help='LLM to adpot for the schema harmonization')
     parser.add_argument('--embedding_model_name', default='all-MiniLM-L6-v2', type=str, help='model to employ to produce JSON embeddings')
     
     args = parser.parse_args()
@@ -165,7 +179,6 @@ def parseargs():
 
 if __name__ == "__main__":
     
-    global args
     args = parseargs()
     
     main(args)

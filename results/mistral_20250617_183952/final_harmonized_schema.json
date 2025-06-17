@@ -1,0 +1,18 @@
+{
+  "health_parameters": {
+    "age": "int",
+    "sex": "int",
+    "cp": "int",
+    "trestbps": "int",
+    "chol": "float",
+    "fbs": "bool",
+    "restecg": "int",
+    "thalach": "int",
+    "exang": "bool",
+    "oldpeak": "float",
+    "slope": "int",
+    "ca": "int",
+    "thal": "int",
+    "target": "int"
+  }
+}
