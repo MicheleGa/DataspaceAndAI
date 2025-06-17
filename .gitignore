@@ -7,3 +7,4 @@ data/*
 # But not JSON or CSV files in data/
 !data/*.json
 !data/*.py
+!data/json_data
