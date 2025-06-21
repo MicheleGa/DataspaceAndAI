@@ -1,4 +1,0 @@
-structure,semantic,x,y
-0.20833333333333334,0.346273,non_invasive_bp_estimation_db.json,heart_failure_db.json
-0.35714285714285715,0.6024475,non_invasive_bp_estimation_db.json,heart_disease_db.json
-0.42857142857142855,0.42058194,heart_failure_db.json,heart_disease_db.json

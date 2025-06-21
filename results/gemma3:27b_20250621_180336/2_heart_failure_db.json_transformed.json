@@ -1,0 +1,51 @@
+{
+  "subject_id": "n/a",
+  "age": 75,
+  "demographics": {
+    "sex": "1",
+    "height": "n/a",
+    "weight": "n/a"
+  },
+  "physiological_data": {
+    "blood_pressure": {
+      "systolic": "n/a",
+      "diastolic": "n/a"
+    },
+    "heart_rate": "n/a",
+    "max_heart_rate": "n/a"
+  },
+  "health_status": {
+    "chest_pain": "n/a",
+    "diabetes": 0,
+    "exercise_angina": "n/a",
+    "high_blood_pressure": 1,
+    "coronary_artery_disease": "n/a",
+    "arrythmia": "n/a",
+    "heart_attack": "n/a",
+    "stroke": "n/a",
+    "heart_failure": "n/a",
+    "aortic_stenosis": "n/a",
+    "valvular_heart_disease": "n/a",
+    "other_cv_diseases": "n/a"
+  },
+  "biochemical_data": {
+    "serum": {
+      "glucose": "n/a"
+    }
+  },
+  "ekg_data": {
+    "results": "n/a",
+    "st_depression": "n/a",
+    "st_slope": "n/a"
+  },
+  "cardiac_imaging": {
+    "vessels_fluro": "n/a",
+    "thallium": "n/a"
+  },
+  "outcome": {
+    "heart_disease": "1"
+  },
+  "medications": {
+    "cvd_meds": "n/a"
+  }
+}

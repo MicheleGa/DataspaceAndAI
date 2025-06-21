@@ -1,0 +1,19 @@
+{
+  "age": "INTEGER",
+  "weight": "INTEGER",
+  "height": "INTEGER",
+  "data_PPG": "INTEGER",
+  "UID": "STRING",
+  "anaemia": "BOOLEAN",
+  "creatinine_phosphokinase": "INTEGER",
+  "diabetes": "BOOLEAN",
+  "ejection_fraction": "INTEGER",
+  "high_blood_pressure": "BOOLEAN",
+  "platelets": "FLOAT",
+  "serum_creatinine": "FLOAT",
+  "serum_sodium": "INTEGER",
+  "sex": "INTEGER",
+  "smoking": "BOOLEAN",
+  "time": "INTEGER",
+  "DEATH_EVENT": "BOOLEAN"
+}

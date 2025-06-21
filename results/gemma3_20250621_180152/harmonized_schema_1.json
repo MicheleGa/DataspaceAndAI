@@ -1,0 +1,7 @@
+{
+  "patient_id": "STRING",
+  "age": "INTEGER",
+  "weight": "INTEGER",
+  "height": "INTEGER",
+  "PPG": "INTEGER"
+}

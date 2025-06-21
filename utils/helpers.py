@@ -35,26 +35,30 @@ def count_keys_per_level(json_data, level=0, key_counts=None):
 
 def extract_text_content(json_data):
     """
-    Recursively extracts all string values (keys and string-based values) from JSON data.
+    Recursively extracts all *key* strings from JSON data.
+    Values are not included in the extracted text for embedding.
 
     Args:
         json_data (dict, list, str, int, float, bool, None): The JSON data to process.
 
     Returns:
-        list: A list of strings containing all the textual content found in the JSON.
+        list: A list of strings containing all the keys found in the JSON.
     """
     text_list = []
     if isinstance(json_data, dict):
         for key, value in json_data.items():
-            text_list.append(str(key))  # Treat keys as text too
+            text_list.append(str(key))  # Always append the key
+            # Recursively call for nested structures (dict or list) to get their keys
             text_list.extend(extract_text_content(value))
     elif isinstance(json_data, list):
         for item in json_data:
+            # Recursively call for items in list; they could be nested dicts
             text_list.extend(extract_text_content(item))
-    elif isinstance(json_data, (str, int, float, bool, type(None))):
-        text_list.append(str(json_data))
+    # If json_data is a base type (str, int, float, bool, None),
+    # we do NOT append its value, as the goal is to extract only keys.
+    # The function simply returns the current (empty or partially filled) text_list
+    # for these base cases.
     return text_list
-
 
 def get_json_embedding(json_data, model):
     """

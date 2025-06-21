@@ -1,7 +1,0 @@
-{
-  "id": "string",
-  "age": "int",
-  "weight": "float",
-  "height": "float",
-  "PPG": "int"
-}

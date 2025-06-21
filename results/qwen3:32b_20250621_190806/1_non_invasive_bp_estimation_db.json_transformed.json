@@ -1,0 +1,151 @@
+{
+  "age": 25.0,
+  "weight": 65.0,
+  "height": 175.0,
+  "data_PPG": 2131,
+  "UID": "subject1",
+  "anaemia": "n/a",
+  "creatinine_phosphokinase": "n/a",
+  "diabetes": "n/a",
+  "ejection_fraction": "n/a",
+  "high_blood_pressure": "n/a",
+  "platelets": "n/a",
+  "serum_creatinine": "n/a",
+  "serum_sodium": "n/a",
+  "sex": "n/a",
+  "smoking": "n/a",
+  "time": "n/a",
+  "DEATH_EVENT": "n/a",
+  "chest_pain_type": "n/a",
+  "bp": "n/a",
+  "cholesterol": "n/a",
+  "fbs_over_120": "n/a",
+  "ekg_results": "n/a",
+  "max_hr": "n/a",
+  "exercise_angina": "n/a",
+  "st_depression": "n/a",
+  "slope_of_st": "n/a",
+  "number_of_vessels_fluro": "n/a",
+  "thallium": "n/a",
+  "heart_disease": "n/a",
+  "phase": "n/a",
+  "measurement": "n/a",
+  "date_time": "n/a",
+  "sbp": "n/a",
+  "dbp": "n/a",
+  "baseline": {
+    "sbp": "n/a",
+    "dbp": "n/a"
+  },
+  "delta": {
+    "sbp": "n/a",
+    "dbp": "n/a",
+    "arm_angle": "n/a",
+    "beat_length_ekg": "n/a",
+    "hr": {
+      "ekg": "n/a",
+      "optical": "n/a",
+      "pressure": "n/a"
+    },
+    "hrv_ekg": "n/a",
+    "dpdt": {
+      "optical": "n/a",
+      "pressure": "n/a"
+    },
+    "quality": {
+      "optical": "n/a",
+      "pressure": "n/a"
+    },
+    "invpat": {
+      "optical": "n/a",
+      "pressure": "n/a"
+    },
+    "rpat": {
+      "optical": "n/a",
+      "pressure": "n/a"
+    },
+    "aix_pressure": "n/a",
+    "dicrotic_notch_height_pressure": "n/a",
+    "ejection_duration": {
+      "fraction_pressure": "n/a",
+      "pressure": "n/a"
+    },
+    "rwat_pressure": "n/a",
+    "sysrise_pressure": "n/a"
+  },
+  "arm_angle": "n/a",
+  "motion_level": "n/a",
+  "steps_last": {
+    "five_mins": "n/a",
+    "thirty_mins": "n/a"
+  },
+  "beat_length_ekg": "n/a",
+  "hr": {
+    "ekg": "n/a",
+    "optical": "n/a",
+    "pressure": "n/a"
+  },
+  "hrv_ekg": "n/a",
+  "dpdt": {
+    "optical": "n/a",
+    "pressure": "n/a"
+  },
+  "quality": {
+    "optical": "n/a",
+    "pressure": "n/a"
+  },
+  "invpat": {
+    "optical": "n/a",
+    "pressure": "n/a"
+  },
+  "rpat": {
+    "optical": "n/a",
+    "pressure": "n/a"
+  },
+  "aix_pressure": "n/a",
+  "dicrotic_notch_height_pressure": "n/a",
+  "ejection_duration": {
+    "fraction_pressure": "n/a",
+    "pressure": "n/a"
+  },
+  "rwat_pressure": "n/a",
+  "sysrise_pressure": "n/a",
+  "duration": "n/a",
+  "pressure_quality": "n/a",
+  "optical_quality": "n/a",
+  "waveform_file_path": "n/a",
+  "waveforms_generated": "n/a",
+  "primary": {
+    "systolic": "n/a",
+    "diastolic": "n/a"
+  },
+  "secondary": {
+    "systolic": "n/a",
+    "diastolic": "n/a"
+  },
+  "consensus": {
+    "systolic_error": "n/a",
+    "diastolic_error": "n/a"
+  },
+  "n_meas": {
+    "inlab": "n/a",
+    "ambulatory": "n/a"
+  },
+  "aurora_size": "n/a",
+  "fitzpatrick_scale": "n/a",
+  "bp_cuff_arm": "n/a",
+  "in_feature_table": "n/a",
+  "gender": "n/a",
+  "self_report_htn": "n/a",
+  "coronary_artery_disease": "n/a",
+  "arrythmia": "n/a",
+  "previous": {
+    "heart_attack": "n/a",
+    "stroke": "n/a"
+  },
+  "heart_failure": "n/a",
+  "aortic_stenosis": "n/a",
+  "valvular_heart_disease": "n/a",
+  "other_cv_diseases": "n/a",
+  "cvd_meds": "n/a"
+}

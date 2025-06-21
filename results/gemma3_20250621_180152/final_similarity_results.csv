@@ -1,0 +1,5 @@
+structure,semantic,x,y
+0.15,0.31,1_non_invasive_bp_estimation_db.json,final_harmonized_schema
+0.18,0.56,2_heart_failure_db.json,final_harmonized_schema
+0.41,0.55,3_heart_disease_db.json,final_harmonized_schema
+0.22,0.72,4_aurora_db.json,final_harmonized_schema

@@ -1,46 +1,33 @@
 # An AI Driven Harmonized Data Ingestion: Vision For Seamless Cross-Domain Data Integration
 
-## Setup
-
+## ⚙️ Setup
 Install OLLAMA on your laptop from their official [website](https://ollama.com/download), more infromations can also be found at their GitHub [repo](https://github.com/ollama/ollama). Choose your OS, in this case we are on Ubuntu 22.04, Jammy jellifish.
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
+It is possible to run the above command also to update an existing installation of OLLAMA.
 Test it by running:
 
 ```bash
-ollama run llama3.2
+ollama run gemma3
 ```
 
 which should pull the *llama3.2* model from the ollama repository and run it as a service in local (port 127.0.0.1:port_number).
-Then, you can decide which OLLAMA model to use by downloading it. For example to get *mistral*:
+Then, you can decide which OLLAMA model to use by downloading it. We have currently pull:
 
 ```bash
-ollama pull mistral
+ollama pull gemma3:27b
+ollama pull qwen3:32b
 ```
 
-we are going to test different of them which should be downloaded before using them in the code (not sure whether the download will occur automatically if you try to use a model that has not been pulled previously). We can also download the Qwen series model:
+and with *ollama list*, *ollama ps*, *ollama rm* it is possible to list downloaded OLLAMA models, list the OLLAMA model currently running, and delete a downloaded OLLAMA model. 
+
+Then to employ the OLLAMA model inside python code, we create a python virtualenv using *requirements.txt*. Hence, as usual, we run the following sequence of commands (assuming Python is already installed in your machine, here we are using Python 3.11.4 from Anaconda):
 
 ```bash
-ollama pull qwen2.5
-```
-
-and with *ollama list* and *ollama ps* it is possible to see which OLLAMA models have been downloaded and which ones are currently running. We have currently pull:
-
-```bash
-ollama pull llama3.2
-ollama pull qwen2.5
-ollama pull mistral
-ollama pull gemma3
-ollama pull phi4-mini
-```
-
-Then to use it inside python code, we create a python virtualenv using *requirements.txt*. Hence, as usual, we run the following sequence of commands (assuming you already installed Python in your machine, here we are using Python 3.11.4 from Anaconda):
-
-```bash
-python -m venv venv # venv is the name of the python virtual environment
+python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 ```
@@ -50,7 +37,7 @@ Now you should be able to call OLLAMA models also from the python code. Like
 ```python
 import OLLAMA
 
-response = ollama.chat(model='mistral', messages=[
+response = ollama.chat(model='gemma3', messages=[
             {
                 'role': 'user',
                 'content': 'Why is the sky blue?',
@@ -59,16 +46,20 @@ response = ollama.chat(model='mistral', messages=[
 print(response['message']['content'])
 ```
 
-> - With *mistral*, you should get: *The sky appears blue because of a phenomenon called Rayleigh scattering. As sunlight passes through Earth's atmosphere, it interacts with molecules and tiny particles in the air, like dust and water droplets. Blue light has shorter wavelengths and gets scattered more than other colors as it travels due to the way its particles are arranged. This scattered blue light is what we see when looking up at the sky. At sunrise or sunset, you may observe the sky in shades of red, orange, pink, and purple - this is due to a different type of scattering called Raman scattering and the way the sunlight interacts with air molecules at specific angles.*
+## ▶️ Run the System
 
-> - With *llama3.2*: *The sky appears blue because of a phenomenon called scattering, which occurs when sunlight interacts with the tiny molecules of gases in the Earth's atmosphere.Here's what happens: 1 Sunlight enters the Earth's atmosphere and contains all the colors of the visible spectrum (red, orange, yellow, green, blue, indigo, and violet).
-2 When sunlight encounters a gas molecule, such as nitrogen or oxygen, it scatters in all directions.
-3 The shorter (blue) wavelengths are scattered more than the longer (red) wavelengths because they interact more strongly with the smaller gas molecules.
-4 As a result, the blue light is dispersed throughout the atmosphere, giving the sky its blue appearance. This effect is known as Rayleigh scattering, named after the British physicist Lord Rayleigh, who first described it in the late 19th century. It's also responsible for the colorful sunsets we see when sunlight passes through more particles in the atmosphere. So, to summarize, the sky appears blue because of the scattering of sunlight by tiny gas molecules in the Earth's atmosphere, which favors shorter wavelengths like blue over longer wavelengths like red. Do you have any other questions about this topic?* 
-> - With *Qwen*: *The sky appears blue because of the way Earth's atmosphere scatters sunlight in all directions. Sunlight is made up of different colors that correspond to different wavelengths. When sunlight enters the Earth's atmosphere, the shorter wavelength colors (blue and violet) are scattered by gases and particles in the air much more than the longer wavelength colors (red, orange, and yellow). However, our eyes are more sensitive to blue light, and there is a lot less natural violet light, so we predominantly perceive the sky as being blue. At sunrise or sunset, you might see reds and oranges because by this time, most of the shorter wavelengths have been scattered out, leaving the longer wavelengths to reach your eyes directly.*
+Follow the preprocessing in the *data* folder to build the JSON messages that will build the stream of incoming messages:
 
-## Run the experiment
+```bash
+cd data
+python preprocessing.py
+```
+
+more instructions and infromation in *data/READEME.md*.
+Then, the Schema Harmonization and JSON message transformation tasks can be perfromed by choosing an LLM from the downloaded OLLAMA suite. For example:
 
 ```python
-python main.py
+python main.py --model_name gemma3
 ```
+
+which will generate a folder inside the *results* directory with harmonized schemas after each JSON message from the stream, CSV files with initial structural/semantic similarity (their definition is in *utils/metrics*) between each pair of JSON messages in the stream, final harmonized schema and structural/semantic similarity between each JSON message in the stream, the final harmonized schema, and the transformed JSON messages to the harmonized schema. In the *results* folder it is possible to run a script for visualize structural/semantic similarity (namely *results/data_visualization.py*).

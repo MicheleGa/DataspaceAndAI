@@ -1,0 +1,34 @@
+{
+  "subject_id": "STRING",
+  "age": "INTEGER",
+  "demographics": {
+    "sex": "INTEGER"
+  },
+  "physiological_data": {
+    "blood_pressure": "INTEGER",
+    "cholesterol": "INTEGER",
+    "max_heart_rate": "INTEGER"
+  },
+  "health_status": {
+    "chest_pain": "INTEGER",
+    "diabetes": "INTEGER",
+    "exercise_angina": "INTEGER"
+  },
+  "biochemical_data": {
+    "serum": {
+      "glucose": "INTEGER"
+    }
+  },
+  "ekg_data": {
+    "results": "INTEGER",
+    "st_depression": "FLOAT",
+    "st_slope": "INTEGER"
+  },
+  "cardiac_imaging": {
+    "vessels_fluro": "INTEGER",
+    "thallium": "INTEGER"
+  },
+  "outcome": {
+    "heart_disease": "STRING"
+  }
+}

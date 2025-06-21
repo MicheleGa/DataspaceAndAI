@@ -45,7 +45,7 @@ def calculate_structure_similarity(dict1, dict2):
         total_level_similarity += level_jaccard
 
     # Average the similarities across all unique levels
-    return total_level_similarity / len(all_levels)
+    return round(total_level_similarity / len(all_levels), 2)
 
 
 def calculate_semantic_similarity(embedding1, embedding2):
@@ -65,4 +65,4 @@ def calculate_semantic_similarity(embedding1, embedding2):
         return 0.0
     similarity = cosine_similarity([embedding1], [embedding2])[0][0]
     
-    return similarity
+    return round(similarity, 2)

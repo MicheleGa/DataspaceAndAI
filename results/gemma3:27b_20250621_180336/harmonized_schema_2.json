@@ -1,0 +1,31 @@
+{
+  "subject_id": "STRING",
+  "age": "INTEGER",
+  "physiological_data": {
+    "PPG": "INTEGER",
+    "ejection_fraction": "INTEGER",
+    "platelets": "FLOAT"
+  },
+  "biochemical_data": {
+    "serum": {
+      "creatinine": "FLOAT",
+      "sodium": "INTEGER"
+    },
+    "creatinine_phosphokinase": "INTEGER"
+  },
+  "health_status": {
+    "anaemia": "INTEGER",
+    "diabetes": "INTEGER",
+    "high_blood_pressure": "INTEGER",
+    "smoking": "INTEGER"
+  },
+  "demographics": {
+    "sex": "INTEGER"
+  },
+  "temporal_data": {
+    "time": "INTEGER"
+  },
+  "outcome": {
+    "DEATH_EVENT": "INTEGER"
+  }
+}
