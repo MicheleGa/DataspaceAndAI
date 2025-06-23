@@ -1,7 +1,0 @@
-{
-  "UID": "STRING",
-  "age": "INTEGER",
-  "weight": "INTEGER",
-  "height": "INTEGER",
-  "data_PPG": "INTEGER"
-}

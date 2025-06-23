@@ -12,106 +12,22 @@ SYSTEM_PROMPT = """
     - A 'Current harmonized schema' which is the target schema for transformation, including data types (e.g., "STRING", "INTEGER", "BOOLEAN", "ARRAY", "OBJECT").
 
 # Output
-    - A transformed JSON message that strictly adheres to the 'Current harmonized schema', with values from the 'Incoming JSON for transformation' mapped appropriately.
-
-# Instructions
-    The following are guidelines for the JSON transformation process:
-        - Semantic Mapping: For each key-value pair in the 'Incoming JSON for transformation', identify the key in the 'Current harmonized schema' that has the highest semantic similarity.
-        - Value Assignment:
-            - Assign the value from the 'Incoming JSON for transformation' to the semantically mapped key in the output JSON.
-            - If the harmonized schema specifies a different data type for a field than the incoming value, convert the incoming value to match the harmonized schema's data type. For example:
-                - If schema type is "INTEGER" and incoming is "2023-10-27" (string), try to extract digits (e.g., 20231027). If incoming is "123 Main St", set to "n/a".
-                - If schema type is "STRING" and incoming is 20231027 (integer), convert to "20231027".
-                - If schema type is "BOOLEAN", convert truthy/falsy values accordingly (e.g., "true" to true, "false" to false, 1 to true, 0 to false).
-                - For complex types like "ARRAY" or "OBJECT", ensure the structure matches and fill in nested values recursively.
-            - If a value in the 'Incoming JSON for transformation' cannot be meaningfully converted to the target data type, or if a key in the harmonized schema has no semantically similar counterpart in the incoming JSON, assign "n/a" as its value.
-            - For nested structures in the harmonized schema, populate their sub-keys based on semantic mapping from the incoming JSON's flat or nested keys. If a nested field in the harmonized schema cannot be populated from the incoming JSON, its value should be "n/a".
-        - Structure Adherence: The output JSON must strictly follow the structure (nested objects, key names) of the 'Current harmonized schema'. Do not introduce new keys or alter the structure of the harmonized schema.
-        - CRITICAL:
-            - Generate ONLY a JSON object as the output.
-            - Generate a valid JSON object that starts with `{` and ends with `}`.
-            - DO NOT include any introductory text, explanations, concluding remarks, or fields for metadata.
-            - Ensure no comments, explanations, or descriptive text appear inside the JSON structure, even for field values.
-
-# Example
-    [{'role': 'user', 'content': 'Incoming JSON for transformation:
-            {
-                "dob": "2023-10-27"
-            }
-            Current harmonized schema:
-            {
-                "date_of_birth": "STRING",
-                "name": {
-                    "first": "STRING",
-                    "last": "STRING"
-                    },
-                "address": {
-                    "street": "STRING",
-                    "city": "STRING"
-                    },
-                "phone_number": "INTEGER"
-            }
-            Analyze the incoming JSON and provide the transformed JSON object.'},
-     {'role': 'assistant', 'content': '
-            {
-                "date_of_birth": "2023-10-27",
-                "name": {
-                    "first": "n/a",
-                    "last": "n/a"
-                    },
-                "address": {
-                    "street": "n/a",
-                    "city": "n/a"
-                    },
-                "phone_number": "n/a"
-            }'},
-     {'role': 'user', 'content': 'Incoming JSON for transformation:
-            {
-                "dob": 20231027,
-                "name": "John",
-                "surname": "Doe",
-                "address_street": "123 Main St",
-                "adress_city": "Anytown",
-                "phone_number": "123-456-7890"
-            }
-            Current harmonized schema:
-            {
-                "date_of_birth": "STRING",
-                "name": {
-                    "first": "STRING",
-                    "last": "STRING"
-                    },
-                "address": {
-                    "street": "STRING",
-                    "city": "STRING"
-                    },
-                "phone_number": "INTEGER"
-            }
-            Analyze the incoming JSON and provide the transformed JSON object.'},
-     {'role': 'assistant', 'content': '
-            {
-                "date_of_birth": "20231027",
-                "name": {
-                    "first": "John",
-                    "last": "Doe"
-                    },
-                "address": {
-                    "street": "123 Main St",
-                    "city": "Anytown"
-                    },
-                "phone_number": 1234567890
-            }'}
-    ]
+    - A transformed JSON message that strictly adheres to the 'harmonized schema', with values from the 'Incoming JSON for transformation' mapped appropriately.
 """
 
 class OLLAMATransformer:
-    def __init__(self, model_name):
+    def __init__(self, model_name, temperature, top_p):
         self.model_name = model_name
         self.system_prompt = SYSTEM_PROMPT
         # self.messages is now primarily for displaying the conversation history
         # but is not directly passed to ollama.chat for each prediction
         self.messages = [{'role': 'system', 'content': self.system_prompt}]
         self.conversation_count = 0
+        
+        # Chat options
+        self.temperature = temperature
+        self.top_p = top_p
+
 
     def predict(self, incoming_json: dict, target_harmonized_schema: dict):
         """
@@ -127,9 +43,107 @@ class OLLAMATransformer:
         """
         try:
             # Construct the user message content, including both the incoming JSON and the target schema.
-            user_message_content = (
-                f"Incoming JSON for transformation:\n{json.dumps(incoming_json, indent=2)}\n\n"
-                f"Current harmonized schema:\n{json.dumps(target_harmonized_schema, indent=2)}\n\n"
+            user_message_content = """
+            # Instructions
+            
+                The following are guidelines for the JSON transformation process:
+                    - Semantic Mapping: For each key-value pair in the 'Incoming JSON for transformation', identify the key in the 'Current harmonized schema' that has the highest semantic similarity.
+                    - Value Assignment:
+                        - Assign the value from the 'Incoming JSON for transformation' to the semantically mapped key in the output JSON.
+                        - If the harmonized schema specifies a different data type for a field than the incoming value, convert the incoming value to match the harmonized schema's data type. For example:
+                            - If schema type is "INTEGER" and incoming is "2023-10-27" (string), try to extract digits (e.g., 20231027). If incoming is "123 Main St", set to "n/a".
+                            - If schema type is "STRING" and incoming is 20231027 (integer), convert to "20231027".
+                            - If schema type is "BOOLEAN", convert truthy/falsy values accordingly (e.g., "true" to true, "false" to false, 1 to true, 0 to false).
+                            - For complex types like "ARRAY" or "OBJECT", ensure the structure matches and fill in nested values recursively.
+                        - If a value in the 'Incoming JSON for transformation' cannot be meaningfully converted to the target data type, or if a key in the harmonized schema has no semantically similar counterpart in the incoming JSON, assign "n/a" as its value.
+                        - For nested structures in the harmonized schema, populate their sub-keys based on semantic mapping from the incoming JSON's flat or nested keys. If a nested field in the harmonized schema cannot be populated from the incoming JSON, its value should be "n/a".
+                    - Structure Adherence: The output JSON must strictly follow the structure (nested objects, key names) of the 'Current harmonized schema'. Do not introduce new keys or alter the structure of the harmonized schema.
+                    - CRITICAL:
+                        - Generate ONLY a JSON object as the output.
+                        - Generate a valid JSON object that starts with `{` and ends with `}`.
+                        - DO NOT include any introductory text, explanations, concluding remarks, or fields for metadata.
+                        - Ensure no comments, explanations, or descriptive text appear inside the JSON structure, even for field values.
+                        - DO NOT modify the harmonized JSON schema, only update its values with those of the input JSON message to be transformed.
+
+            # Examples
+
+                - Example 1:
+                    
+                    [{'role': 'user', 'content': 'Incoming JSON for transformation:
+                            {
+                                "dob": "2023-10-27"
+                            }
+                            Harmonized schema:
+                            {
+                                "date_of_birth": "STRING",
+                                "name": {
+                                    "first": "STRING",
+                                    "last": "STRING"
+                                    },
+                                "address": {
+                                    "street": "STRING",
+                                    "city": "STRING"
+                                    },
+                                "phone_number": "INTEGER"
+                            }
+                            Analyze the incoming JSON and provide the transformed JSON object.'},
+                    {'role': 'assistant', 'content': '
+                            {
+                                "date_of_birth": "2023-10-27",
+                                "name": {
+                                    "first": "n/a",
+                                    "last": "n/a"
+                                    },
+                                "address": {
+                                    "street": "n/a",
+                                    "city": "n/a"
+                                    },
+                                "phone_number": "n/a"
+                            }'}]
+                            
+                - Example 2:
+                
+                    [{'role': 'user', 'content': 'Incoming JSON for transformation:
+                            {
+                                "dob": 20231027,
+                                "name": "John",
+                                "surname": "Doe",
+                                "address_street": "123 Main St",
+                                "adress_city": "Anytown",
+                                "phone_number": "123-456-7890"
+                            }
+                            Harmonized schema:
+                            {
+                                "date_of_birth": "STRING",
+                                "name": {
+                                    "first": "STRING",
+                                    "last": "STRING"
+                                    },
+                                "address": {
+                                    "street": "STRING",
+                                    "city": "STRING"
+                                    },
+                                "phone_number": "INTEGER"
+                            }
+                            Analyze the incoming JSON and provide the transformed JSON object.'},
+                    {'role': 'assistant', 'content': '
+                            {
+                                "date_of_birth": "20231027",
+                                "name": {
+                                    "first": "John",
+                                    "last": "Doe"
+                                    },
+                                "address": {
+                                    "street": "123 Main St",
+                                    "city": "Anytown"
+                                    },
+                                "phone_number": 1234567890
+                            }'}]            
+            """
+            
+            user_message_content += (
+                f"\n\nIncoming JSON for transformation:\n{json.dumps(incoming_json, indent=2)}\n\n"
+                f"Harmonized schema:\n{json.dumps(target_harmonized_schema, indent=2)}\n\n"
                 f"Analyze the incoming JSON and provide the transformed JSON object."
             )
 
@@ -153,8 +167,8 @@ class OLLAMATransformer:
                     stream=False, # Changed to False for simplicity as full response is awaited
                     format='json',  # Request JSON output from the model
                     options={
-                        'temperature': 0.4,  # Lower temperature for more consistent JSON output
-                        'top_p': 0.7  # Use top-p sampling to control diversity
+                        'temperature': self.temperature,  # Lower temperature for more consistent JSON output
+                        'top_p': self.top_p  # Use top-p sampling to control diversity
                     }
                 )
 

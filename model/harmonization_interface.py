@@ -13,80 +13,20 @@ SYSTEM_PROMPT = """
     
 # Output 
     - A harmonized JSON message after each streamed JSON message that captures the essential semantics of all JSON messages processed so far.
-
-# Instructions    
-    The following are guidelines for the harmonization process to generate the harmonized JSON message given the current and previous JSON messages:
-        - The first harmonized JSON message is exactly equal to the first JSON message.
-        - For subsequent JSON messages composing the stream, you must integrate them into the existing harmonized JSON message. This involves:
-            - Key Meaning: 
-                - Extrapolate the semantic meaning of each key in the current message. 
-                - If different keys in the same JSON message represent the same underlying concept, merge them to a single, consistent key name that generalize them.
-                - Identify semantic similarity also over the keys of previous JSON messages and harmonized JSON messages.
-            - Value Consistency: 
-                - Ensure consistency in data types and formats for values associated with harmonized keys.
-            - Nested Structures: 
-                - Identify groups of semantically corrrelated keys and merge them into nested structures.
-                - The keys of the nested structure present the semantic meaning of the group.
-            - Redundancy Elimination: 
-                - Remove redundant keys and values that do not add new information to the harmonized JSON message.
-                - Avoid adding redundant keys and values that are already represented in the harmonized JSON message.
-            - CRITICAL: 
-                - Generate ONLY a JSON object as the output.
-                - Generate a valid JSON object that starts with `{' and ends with `}'.
-                - DO NOT include any introductory text, explanations, concluding remarks, or fields for metadata.
-                - Ensure no comments, explanations, or descriptive text appear inside the JSON structure, even for field values.
-                - DO NOT introduce a nesting level in the harmonized JSON message to specfy the data type of the value.
-     
-# Example
-    [{'role': 'user', 'content': 'Incoming JSON for harmonization:
-            {
-                "date_of_birth": "2023-10-27"
-            }
-            Current harmonized schema:
-            No current schema (first message)    
-            Analyze the incoming JSON and provide the updated harmonized schema as a JSON object.'}, 
-     {'role': 'assistant', 'content': '
-            {
-                "date_of_birth": "STRING"
-            }, 
-     {'role': 'user', 'content': 'Incoming JSON for harmonization:
-            {
-                "dob": 20231027, 
-                "name": "John", 
-                "surname": "Doe", 
-                "address_street": "123 Main St", 
-                "adress_city": "Anytown", 
-                "phone_number": 123-456-7890
-            }
-            Current harmonized schema:
-            {
-                "date_of_birth": "STRING"
-            }
-            Analyze the incoming JSON and provide the updated harmonized schema as a JSON object.'},
-     {'role': 'assistant', 'content': '
-            {
-                "date_of_birth": "STRING", 
-                "name": {
-                    "first": "STRING", 
-                    "last": "STRING"
-                    }, 
-                "address": {
-                    "street": "STRING", 
-                    "city": "STRING"
-                    }, 
-                "phone_number": "INTEGER"
-            }]
-
 """
 
 class OLLAMAHarmonizer:
-    def __init__(self, model_name):
+    def __init__(self, model_name, temperature, top_p):
         self.model_name = model_name
         self.system_prompt = SYSTEM_PROMPT
         # Initialize messages with the system prompt
         self.messages = [{'role': 'system', 'content': self.system_prompt}]
         self.harmonized_schema = {} # To store the current harmonized JSON
         self.conversation_count = 0
+        
+        # Chat options
+        self.temperature = temperature
+        self.top_p = top_p
 
     def predict(self, user_data):
         """
@@ -105,7 +45,127 @@ class OLLAMAHarmonizer:
                 user_json = json.loads(user_data)
                 # If parsed successfully, use the JSON object for the message
                 current_schema_text = json.dumps(self.harmonized_schema, indent=2) if self.harmonized_schema else "No current schema (first message)"
-                user_message_content = f"Incoming JSON for harmonization:\n{json.dumps(user_json, indent=2)}\n\nCurrent harmonized schema:\n{current_schema_text}\n\nAnalyze the incoming JSON and provide the updated harmonized schema as a JSON object."
+                user_message_content = """
+                # Instructions    
+                
+                    The following are guidelines for the harmonization process to generate the harmonized JSON message given the current and previous JSON messages:
+                        - The first harmonized JSON message is exactly equal to the first JSON message.
+                        - For subsequent JSON messages composing the stream, you must integrate them into the existing harmonized JSON message. This involves:
+                            - Key Meaning: 
+                                - Extrapolate the semantic meaning of each key in the current message. 
+                                - If different keys in the same JSON message represent the same underlying concept, merge them to a single, consistent key name that generalize them.
+                                - Identify semantic similarity also over the keys of previous JSON messages and harmonized JSON messages.
+                            - Value Consistency: 
+                                - Ensure consistency in data types and formats for values associated with harmonized keys.
+                            - Nested Structures: 
+                                - Identify groups of semantically corrrelated keys and merge them into nested structures.
+                                - The keys of the nested structure present the semantic meaning of the group.
+                            - Redundancy Elimination: 
+                                - Remove redundant keys and values that do not add new information to the harmonized JSON message.
+                                - Avoid adding redundant keys and values that are already represented in the harmonized JSON message.
+                            - CRITICAL: 
+                                - Generate ONLY a JSON object as the output.
+                                - Generate a valid JSON object that starts with `{' and ends with `}'.
+                                - DO NOT include any introductory text, explanations, concluding remarks, or fields for metadata.
+                                - Ensure no comments, explanations, or descriptive text appear inside the JSON structure, even for field values.
+                                - DO NOT introduce a nesting level in the harmonized JSON message to specfy the data type of the value.
+                    
+                # Examples
+                    
+                    - Example 1:
+                    
+                        [{'role': 'user', 'content': 'Incoming JSON for harmonization:
+                                {
+                                    "date_of_birth": "2023-10-27"
+                                }
+                                Current harmonized schema:
+                                No current schema (first message)    
+                                Analyze the incoming JSON and provide the updated harmonized schema as a JSON object.'}, 
+                        {'role': 'assistant', 'content': '
+                                {
+                                    "date_of_birth": "STRING"
+                                }]
+                                
+                    - Example 2:
+                    
+                        [{'role': 'user', 'content': 'Incoming JSON for harmonization:
+                                {
+                                    "dob": 20231027, 
+                                    "name": "John", 
+                                    "surname": "Doe", 
+                                    "address_street": "123 Main St", 
+                                    "adress_city": "Anytown", 
+                                    "phone_number": 123-456-7890
+                                }
+                                Current harmonized schema:
+                                {
+                                    "date_of_birth": "STRING"
+                                }
+                                Analyze the incoming JSON and provide the updated harmonized schema as a JSON object.'},
+                        {'role': 'assistant', 'content': '
+                                {
+                                    "date_of_birth": "STRING", 
+                                    "name": {
+                                        "first": "STRING", 
+                                        "last": "STRING"
+                                        }, 
+                                    "address": {
+                                        "street": "STRING", 
+                                        "city": "STRING"
+                                        }, 
+                                    "phone_number": "INTEGER"
+                                }]
+                        
+                    - Example 3:
+                    
+                        [{'role': 'user', 'content': 'Incoming JSON for harmonization:
+                                {
+                                    "dob": 20210820, 
+                                    "name": "Mark", 
+                                    "surname": "Jackson", 
+                                    "address" : {
+                                        "street": "789 Secondary St", 
+                                        "city": "Somecity"
+                                    },
+                                    "email": "someone@null-domain.xyz"
+                                }
+                                Current harmonized schema:
+                                {
+                                    "date_of_birth": "STRING", 
+                                    "name": {
+                                        "first": "STRING", 
+                                        "last": "STRING"
+                                        }, 
+                                    "address": {
+                                        "street": "STRING", 
+                                        "city": "STRING"
+                                        }, 
+                                    "phone_number": "INTEGER"
+                                }
+                                Analyze the incoming JSON and provide the updated harmonized schema as a JSON object.'},
+                        {'role': 'assistant', 'content': '
+                                {
+                                    "date_of_birth": "STRING", 
+                                    "name": {
+                                        "first": "STRING", 
+                                        "last": "STRING"
+                                        }, 
+                                    "contact_information": {
+                                        "address": {
+                                            "street": "STRING", 
+                                            "city": "STRING"
+                                            }, 
+                                        "phone_number": "INTEGER",
+                                        "email": "STRING"   
+                                    }
+                                }]
+                """
+                
+                user_message_content += (
+                    f"\n\nIncoming JSON for harmonization:\n{json.dumps(user_json, indent=2)}"
+                    f"\n\nCurrent harmonized schema:\n{current_schema_text}"
+                    f"\n\nAnalyze the incoming JSON and provide the updated harmonized schema as a JSON object."
+                )
                 
             except json.JSONDecodeError:
                 # If not a valid JSON, return error
@@ -124,8 +184,8 @@ class OLLAMAHarmonizer:
                     stream=False, # Changed to False
                     format='json',  # Request JSON output from the model
                     options={
-                        'temperature': 0.4,  # Lower temperature for more consistent JSON output
-                        'top_p': 0.7 # Use top-p sampling to control diversity
+                        'temperature': self.temperature,  # Lower temperature for more consistent JSON output
+                        'top_p': self.top_p # Use top-p sampling to control diversity
                     }
                 )
                 

@@ -1,9 +1,0 @@
-{
-  "subject_id": "STRING",
-  "age": "INTEGER",
-  "weight": "INTEGER",
-  "height": "INTEGER",
-  "physiological_data": {
-    "PPG": "INTEGER"
-  }
-}

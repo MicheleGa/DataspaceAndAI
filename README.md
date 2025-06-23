@@ -15,11 +15,14 @@ ollama run gemma3
 ```
 
 which should pull the *llama3.2* model from the ollama repository and run it as a service in local (port 127.0.0.1:port_number).
-Then, you can decide which OLLAMA model to use by downloading it. We have currently pull:
+Then, you can decide which OLLAMA model to use by downloading it. This is the output of *ollama list*:
 
 ```bash
-ollama pull gemma3:27b
-ollama pull qwen3:32b
+NAME                  ID              SIZE      MODIFIED           
+deepseek-r1:32b       edba8017331d    19 GB     About a minute ago    
+deepseek-r1:latest    6995872bfe4c    5.2 GB    16 minutes ago        
+gemma3:latest         a2af6cc3eb7f    3.3 GB    2 days ago            
+gemma3:27b            a418f5838eaf    17 GB     2 days ago 
 ```
 
 and with *ollama list*, *ollama ps*, *ollama rm* it is possible to list downloaded OLLAMA models, list the OLLAMA model currently running, and delete a downloaded OLLAMA model. 

@@ -1,0 +1,25 @@
+{
+  "subject_id": 5492,
+  "case": {
+    "start": 0,
+    "end": 15002
+  },
+  "anesthesia": {
+    "start": -300,
+    "end": 15120.0,
+    "type": "General"
+  },
+  "operation": {
+    "start": 5220,
+    "end": 13320,
+    "type": "Major resection",
+    "name": "Lung lobectomy"
+  },
+  "age": 57.0,
+  "sex": "M",
+  "height": 177.2,
+  "weight": 75.3,
+  "body_mass_index": 24.0,
+  "department": "Thoracic surgery",
+  "death_in_hosp": 0
+}

@@ -2,6 +2,7 @@ import os
 import argparse
 import json
 import re
+import pprint
 import pandas as pd
 from sentence_transformers import SentenceTransformer
 from model.harmonization_interface import OLLAMAHarmonizer
@@ -56,7 +57,7 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
     
     ## ---- AI Agent JSON Harmonization ----
     print("\n## ---- AI Agent JSON Harmonization ----")
-    ollama_agent = OLLAMAHarmonizer(model_name=args.model_name)
+    ollama_agent = OLLAMAHarmonizer(model_name=args.model_name, temperature=args.temperature, top_p=args.top_p)
 
     harmonized_response_str = None # This will store the final harmonized JSON string received from OLLAMAHarmonizer
     
@@ -164,7 +165,7 @@ def messages_transformation(run_name, original_json_messages, json_file_names, a
 
     ## ---- AI Agent JSON Message Transformation ----
     print("\n## ---- AI Agent JSON Message Transformation ----")
-    ollama_agent = OLLAMATransformer(model_name=args.model_name)
+    ollama_agent = OLLAMATransformer(model_name=args.model_name, temperature=args.temperature, top_p=args.top_p)
 
     # No need for transofrmed_json_response_str to store only the last response
     # It's better to process and save each one individually.
@@ -246,6 +247,8 @@ def parseargs():
     parser.add_argument('--experiment_name', default='', type=str, help='name for the experiment')
     parser.add_argument('--model_name', default='llama3.2', type=str, help='LLM to adpot for the schema harmonization')
     parser.add_argument('--embedding_model_name', default='all-MiniLM-L6-v2', type=str, help='model to employ to produce JSON embeddings')
+    parser.add_argument('--temperature', default=0.7, type=float, help='temperature for the OLLAMA model (regulate creativity)')
+    parser.add_argument('--top_p', default=0.95, type=float, help='probability that regulates the ratio of tokens the OLLAMA model choose for generating the response')
     
     args = parser.parse_args()
     return args
@@ -254,5 +257,10 @@ def parseargs():
 if __name__ == "__main__":
     
     args = parseargs()
+    
+    # Pretty print the parsed arguments
+    print("Run Configuration:")
+    pprint.pprint(vars(args))
+    print()
     
     main(args)

@@ -7,7 +7,7 @@ import json
 
 def process_directory(directory_path):
     """
-    Reads CSV/TSV files from a directory, collects all unique column names,
+    Reads CSV files from a directory, collects all unique column names,
     and returns a dictionary of column names and their inferred formats
     with an example value from the first instance.
     
@@ -20,46 +20,26 @@ def process_directory(directory_path):
               inferred from the first non-null instance.
     """
     column_metadata = {}
-    
-    # Determine the ID column name based on the directory
-    id_column_name = None
-    if 'aurora_db' in directory_path:
-        id_column_name = 'pid'
-    elif 'mimic-iii' in directory_path:
-        id_column_name = 'subject_id'
-    elif 'vital_db' in directory_path:
-        id_column_name = 'subjectid'
-
-    # Add the ID column to metadata initially, if identified.
-    # Its example value will be populated from data if found.
-    if id_column_name:
-        column_metadata[id_column_name] = "Example ID value (will be populated from data)"
 
     # Iterate through files in the specified directory
     for filename in os.listdir(directory_path):
         filepath = os.path.join(directory_path, filename)
         df = None
 
-        # Process CSV/TSV files
+        # Process CSV files
         # Read only a small number of rows (e.g., 100) to infer types and get example values.
         # Pandas is quite inefficient in merging with large datasets.
         # Still, we need only some sample rows as we ar einterested in their schema rather than content
-        if filename.endswith('.csv'):
+        if filepath.endswith('.csv'):
             df = pd.read_csv(filepath, nrows=100) 
-        elif filename.endswith('.tsv'):
-            df = pd.read_csv(filepath, sep='\t', nrows=100)
         
         if df is not None:
-            # Handle the ID column: update its example value from the first record
-            if id_column_name and id_column_name in df.columns:
-                if pd.notna(df[id_column_name].iloc[0]):
-                    column_metadata[id_column_name] = str(df[id_column_name].iloc[0])
+
+            # --- Normalize column names: lowercase and replace spaces with underscores ---
+            df.columns = [col.strip().lower().replace(' ', '_') for col in df.columns]
 
             # Infer column formats and get the first non-null example values for other columns
             for col_name, dtype in df.dtypes.items():
-                # Skip the ID column as it's handled separately to ensure its presence
-                if col_name == id_column_name:
-                    continue
 
                 # Determine the inferred type of the column for schema representation
                 inferred_type = 'unknown'
@@ -232,10 +212,10 @@ if __name__ == "__main__":
     os.makedirs(args.output_folder, exist_ok=True)
     
     database_names = [
-        'non_invasive_bp_estimation_db',
-        'heart_failure_db',
-        'heart_disease_db' ,
-        'aurora_db'       
+        'aurora_db',
+        'mimic_iii_db',
+        'mimic_iv_db',
+        'vital_db'
         # Add more database names as needed
     ]
     
