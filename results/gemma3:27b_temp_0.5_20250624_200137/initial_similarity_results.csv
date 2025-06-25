@@ -1,0 +1,7 @@
+structure,semantic,x,y
+0.64,0.46,1_aurora_db.json,2_mimic_iii_db.json
+0.76,0.41,1_aurora_db.json,3_mimic_iv_db.json
+0.5,0.45,1_aurora_db.json,4_vital_db.json
+0.83,0.53,2_mimic_iii_db.json,3_mimic_iv_db.json
+0.74,0.62,2_mimic_iii_db.json,4_vital_db.json
+0.63,0.42,3_mimic_iv_db.json,4_vital_db.json

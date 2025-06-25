@@ -1,0 +1,62 @@
+{
+  "patient_id": 10000032,
+  "age": "n/a",
+  "gender": "F",
+  "physical_characteristics": {
+    "height": "n/a",
+    "weight": "n/a",
+    "body_mass_index": "n/a"
+  },
+  "cardiovascular_conditions": {
+    "high_blood_pressure": "n/a",
+    "coronary_artery_disease": "n/a",
+    "diabetes": "n/a",
+    "arrythmia": "n/a",
+    "previous": {
+      "heart_attack": "n/a",
+      "stroke": "n/a"
+    },
+    "heart_failure": "n/a",
+    "aortic_stenosis": "n/a",
+    "valvular_heart_disease": "n/a",
+    "other_cv_diseases": "n/a"
+  },
+  "vital_signs": {
+    "temperature": 98.2,
+    "heart_rate": 85.0,
+    "respiratory_rate": 18.0,
+    "oxygen_saturation": 98.0,
+    "systolic_blood_pressure": 81.0,
+    "diastolic_blood_pressure": 38.0
+  },
+  "diagnosis": {
+    "code": "V08",
+    "version": 9.0,
+    "title": "ASYMPTOMATIC HIV INFECTION"
+  },
+  "admission": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_location": "n/a",
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "WHITE",
+  "emergency_department": {
+    "registration_time": "n/a",
+    "discharge_time": "n/a"
+  },
+  "surgical_details": {
+    "anesthesia_start": "n/a",
+    "anesthesia_end": "n/a",
+    "anesthesia_type": "n/a",
+    "operation_start": "n/a",
+    "operation_end": "n/a",
+    "operation_type": "n/a",
+    "operation_name": "n/a"
+  },
+  "death_in_hospital": "n/a",
+  "department": "n/a"
+}

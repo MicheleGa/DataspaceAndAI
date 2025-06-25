@@ -1,165 +1,253 @@
+nohup: ignoring input
+Run Configuration:
+{'dataset_folder': './data/json_data',
+ 'embedding_model_name': 'all-MiniLM-L6-v2',
+ 'experiment_name': '',
+ 'model_name': 'gemma3:27b',
+ 'results_folder': './results',
+ 'temperature': 0.7,
+ 'top_p': 0.95}
+
 Loading JSON messages...
-Loaded non_invasive_bp_estimation_db.json
-Loaded heart_failure_db.json
-Loaded heart_disease_db.json
+Loaded 1_aurora_db.json
+Loaded 2_mimic_iii_db.json
+Loaded 3_mimic_iv_db.json
+Loaded 4_vital_db.json
 
 ## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.2083
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.3463
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.3571
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.6024
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4286
-Semantic Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4206
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.64
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.46
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.76
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.41
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.50
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.45
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.83
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.53
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.74
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.62
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.63
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.42
 
-Saving initial similarity results to a DataFrame...
+Saving initial similarity results to ./results/gemma3:27b_20250624_182334/initial_similarity_results.csv...
 
 ## ---- AI Agent JSON Harmonization ----
-Processing JSON message 1 (non_invasive_bp_estimation_db.json)...
-Harmonized schema saved to ./results/llama3.2_20250617_183817/harmonized_schema_1.json
-Processing JSON message 2 (heart_failure_db.json)...
-Harmonized schema saved to ./results/llama3.2_20250617_183817/harmonized_schema_2.json
-Processing JSON message 3 (heart_disease_db.json)...
-Harmonized schema saved to ./results/llama3.2_20250617_183817/harmonized_schema_3.json
+Processing JSON message 1 (1_aurora_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250624_182334/harmonized_schema_1.json
+Processing JSON message 2 (2_mimic_iii_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250624_182334/harmonized_schema_2.json
+Processing JSON message 3 (3_mimic_iv_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250624_182334/harmonized_schema_3.json
+Processing JSON message 4 (4_vital_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250624_182334/harmonized_schema_4.json
 
 ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.2778
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.4657
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.1933
-Semantic Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.6039
-Key Structure Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.1429
-Semantic Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.5102
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.28
+Semantic Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.66
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.25
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.64
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.26
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.45
+Key Structure Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.27
+Semantic Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.76
 
 Saving final similarity results to a DataFrame...
-Final similarity results saved to final_similarity_results.csv in the figures folder.
+Final similarity results saved to ./results/gemma3:27b_20250624_182334/final_similarity_results.csv.
+
+## ---- AI Agent JSON Message Transformation ----
+Transforming JSON message 1 (1_aurora_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250624_182334/1_aurora_db.json_transformed.json
+Transforming JSON message 2 (2_mimic_iii_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250624_182334/2_mimic_iii_db.json_transformed.json
+Transforming JSON message 3 (3_mimic_iv_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250624_182334/3_mimic_iv_db.json_transformed.json
+Transforming JSON message 4 (4_vital_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250624_182334/4_vital_db.json_transformed.json
+Run Configuration:
+{'dataset_folder': './data/json_data',
+ 'embedding_model_name': 'all-MiniLM-L6-v2',
+ 'experiment_name': '',
+ 'model_name': 'deepseek-r1:32b',
+ 'results_folder': './results',
+ 'temperature': 0.7,
+ 'top_p': 0.95}
+
 Loading JSON messages...
-Loaded non_invasive_bp_estimation_db.json
-Loaded heart_failure_db.json
-Loaded heart_disease_db.json
+Loaded 1_aurora_db.json
+Loaded 2_mimic_iii_db.json
+Loaded 3_mimic_iv_db.json
+Loaded 4_vital_db.json
 
 ## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.2083
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.3463
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.3571
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.6024
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4286
-Semantic Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4206
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.64
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.46
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.76
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.41
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.50
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.45
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.83
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.53
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.74
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.62
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.63
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.42
 
-Saving initial similarity results to a DataFrame...
+Saving initial similarity results to ./results/deepseek-r1:32b_20250624_194045/initial_similarity_results.csv...
 
 ## ---- AI Agent JSON Harmonization ----
-Processing JSON message 1 (non_invasive_bp_estimation_db.json)...
-Harmonized schema saved to ./results/qwen2.5_20250617_183833/harmonized_schema_1.json
-Processing JSON message 2 (heart_failure_db.json)...
-Harmonized schema saved to ./results/qwen2.5_20250617_183833/harmonized_schema_2.json
-Processing JSON message 3 (heart_disease_db.json)...
-Harmonized schema saved to ./results/qwen2.5_20250617_183833/harmonized_schema_3.json
+Processing JSON message 1 (1_aurora_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_20250624_194045/harmonized_schema_1.json
+Processing JSON message 2 (2_mimic_iii_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_20250624_194045/harmonized_schema_2.json
+Processing JSON message 3 (3_mimic_iv_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_20250624_194045/harmonized_schema_3.json
+Processing JSON message 4 (4_vital_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_20250624_194045/harmonized_schema_4.json
 
 ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.3000
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.5217
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.1964
-Semantic Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.3711
-Key Structure Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.1071
-Semantic Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.5867
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.35
+Semantic Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.70
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.30
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.68
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.31
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.49
+Key Structure Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.30
+Semantic Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.73
 
 Saving final similarity results to a DataFrame...
-Final similarity results saved to final_similarity_results.csv in the figures folder.
+Final similarity results saved to ./results/deepseek-r1:32b_20250624_194045/final_similarity_results.csv.
+
+## ---- AI Agent JSON Message Transformation ----
+Transforming JSON message 1 (1_aurora_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_20250624_194045/1_aurora_db.json_transformed.json
+Transforming JSON message 2 (2_mimic_iii_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_20250624_194045/2_mimic_iii_db.json_transformed.json
+Transforming JSON message 3 (3_mimic_iv_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_20250624_194045/3_mimic_iv_db.json_transformed.json
+Transforming JSON message 4 (4_vital_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_20250624_194045/4_vital_db.json_transformed.json
+Run Configuration:
+{'dataset_folder': './data/json_data',
+ 'embedding_model_name': 'all-MiniLM-L6-v2',
+ 'experiment_name': 'temp_0.5',
+ 'model_name': 'gemma3:27b',
+ 'results_folder': './results',
+ 'temperature': 0.5,
+ 'top_p': 0.95}
+
 Loading JSON messages...
-Loaded non_invasive_bp_estimation_db.json
-Loaded heart_failure_db.json
-Loaded heart_disease_db.json
+Loaded 1_aurora_db.json
+Loaded 2_mimic_iii_db.json
+Loaded 3_mimic_iv_db.json
+Loaded 4_vital_db.json
 
 ## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.2083
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.3463
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.3571
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.6024
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4286
-Semantic Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4206
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.64
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.46
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.76
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.41
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.50
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.45
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.83
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.53
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.74
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.62
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.63
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.42
 
-Saving initial similarity results to a DataFrame...
+Saving initial similarity results to ./results/gemma3:27b_temp_0.5_20250624_200137/initial_similarity_results.csv...
 
 ## ---- AI Agent JSON Harmonization ----
-Processing JSON message 1 (non_invasive_bp_estimation_db.json)...
-Harmonized schema saved to ./results/gemma3_20250617_183906/harmonized_schema_1.json
-Processing JSON message 2 (heart_failure_db.json)...
-Harmonized schema saved to ./results/gemma3_20250617_183906/harmonized_schema_2.json
-Processing JSON message 3 (heart_disease_db.json)...
-Harmonized schema saved to ./results/gemma3_20250617_183906/harmonized_schema_3.json
+Processing JSON message 1 (1_aurora_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_temp_0.5_20250624_200137/harmonized_schema_1.json
+Processing JSON message 2 (2_mimic_iii_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_temp_0.5_20250624_200137/harmonized_schema_2.json
+Processing JSON message 3 (3_mimic_iv_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_temp_0.5_20250624_200137/harmonized_schema_3.json
+Processing JSON message 4 (4_vital_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_temp_0.5_20250624_200137/harmonized_schema_4.json
 
 ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.2500
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.5296
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.5000
-Semantic Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.3889
-Key Structure Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.3571
-Semantic Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.5747
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.28
+Semantic Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.65
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.25
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.61
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.25
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.40
+Key Structure Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.26
+Semantic Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.72
 
 Saving final similarity results to a DataFrame...
-Final similarity results saved to final_similarity_results.csv in the figures folder.
+Final similarity results saved to ./results/gemma3:27b_temp_0.5_20250624_200137/final_similarity_results.csv.
+
+## ---- AI Agent JSON Message Transformation ----
+Transforming JSON message 1 (1_aurora_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_temp_0.5_20250624_200137/1_aurora_db.json_transformed.json
+Transforming JSON message 2 (2_mimic_iii_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_temp_0.5_20250624_200137/2_mimic_iii_db.json_transformed.json
+Transforming JSON message 3 (3_mimic_iv_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_temp_0.5_20250624_200137/3_mimic_iv_db.json_transformed.json
+Transforming JSON message 4 (4_vital_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_temp_0.5_20250624_200137/4_vital_db.json_transformed.json
+Run Configuration:
+{'dataset_folder': './data/json_data',
+ 'embedding_model_name': 'all-MiniLM-L6-v2',
+ 'experiment_name': 'temp_0.5',
+ 'model_name': 'deepseek-r1:32b',
+ 'results_folder': './results',
+ 'temperature': 0.5,
+ 'top_p': 0.95}
+
 Loading JSON messages...
-Loaded non_invasive_bp_estimation_db.json
-Loaded heart_failure_db.json
-Loaded heart_disease_db.json
+Loaded 1_aurora_db.json
+Loaded 2_mimic_iii_db.json
+Loaded 3_mimic_iv_db.json
+Loaded 4_vital_db.json
 
 ## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.2083
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.3463
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.3571
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.6024
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4286
-Semantic Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4206
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.64
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 2 (2_mimic_iii_db.json): 0.46
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.76
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 3 (3_mimic_iv_db.json): 0.41
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.50
+Semantic Similarity between JSON 1 (1_aurora_db.json) and JSON 4 (4_vital_db.json): 0.45
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.83
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 3 (3_mimic_iv_db.json): 0.53
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.74
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and JSON 4 (4_vital_db.json): 0.62
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.63
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and JSON 4 (4_vital_db.json): 0.42
 
-Saving initial similarity results to a DataFrame...
-
-## ---- AI Agent JSON Harmonization ----
-Processing JSON message 1 (non_invasive_bp_estimation_db.json)...
-Harmonized schema saved to ./results/mistral_20250617_183952/harmonized_schema_1.json
-Processing JSON message 2 (heart_failure_db.json)...
-Harmonized schema saved to ./results/mistral_20250617_183952/harmonized_schema_2.json
-Processing JSON message 3 (heart_disease_db.json)...
-Harmonized schema saved to ./results/mistral_20250617_183952/harmonized_schema_3.json
-
-## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.1000
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.4999
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.1131
-Semantic Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.3779
-Key Structure Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.0357
-Semantic Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.6752
-
-Saving final similarity results to a DataFrame...
-Final similarity results saved to final_similarity_results.csv in the figures folder.
-Loading JSON messages...
-Loaded non_invasive_bp_estimation_db.json
-Loaded heart_failure_db.json
-Loaded heart_disease_db.json
-
-## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.2083
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 2 (heart_failure_db.json): 0.3463
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.3571
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and JSON 3 (heart_disease_db.json): 0.6024
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4286
-Semantic Similarity between JSON 2 (heart_failure_db.json) and JSON 3 (heart_disease_db.json): 0.4206
-
-Saving initial similarity results to a DataFrame...
+Saving initial similarity results to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/initial_similarity_results.csv...
 
 ## ---- AI Agent JSON Harmonization ----
-Processing JSON message 1 (non_invasive_bp_estimation_db.json)...
-Harmonized schema saved to ./results/phi4-mini_20250617_184029/harmonized_schema_1.json
-Processing JSON message 2 (heart_failure_db.json)...
-Harmonized schema saved to ./results/phi4-mini_20250617_184029/harmonized_schema_2.json
-Processing JSON message 3 (heart_disease_db.json)...
-Harmonized schema saved to ./results/phi4-mini_20250617_184029/harmonized_schema_3.json
+Processing JSON message 1 (1_aurora_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/harmonized_schema_1.json
+Processing JSON message 2 (2_mimic_iii_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/harmonized_schema_2.json
+Processing JSON message 3 (3_mimic_iv_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/harmonized_schema_3.json
+Processing JSON message 4 (4_vital_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/harmonized_schema_4.json
 
 ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
-Key Structure Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.4000
-Semantic Similarity between JSON 1 (non_invasive_bp_estimation_db.json) and Final Harmonized JSON: 0.4252
-Key Structure Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.2576
-Semantic Similarity between JSON 2 (heart_failure_db.json) and Final Harmonized JSON: 0.5261
-Key Structure Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.1429
-Semantic Similarity between JSON 3 (heart_disease_db.json) and Final Harmonized JSON: 0.4795
+Key Structure Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.33
+Semantic Similarity between JSON 1 (1_aurora_db.json) and Final Harmonized JSON: 0.67
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.28
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) and Final Harmonized JSON: 0.64
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.30
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) and Final Harmonized JSON: 0.43
+Key Structure Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.29
+Semantic Similarity between JSON 4 (4_vital_db.json) and Final Harmonized JSON: 0.75
 
 Saving final similarity results to a DataFrame...
-Final similarity results saved to final_similarity_results.csv in the figures folder.
+Final similarity results saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/final_similarity_results.csv.
+
+## ---- AI Agent JSON Message Transformation ----
+Transforming JSON message 1 (1_aurora_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/1_aurora_db.json_transformed.json
+Transforming JSON message 2 (2_mimic_iii_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/2_mimic_iii_db.json_transformed.json
+Transforming JSON message 3 (3_mimic_iv_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/3_mimic_iv_db.json_transformed.json
+Transforming JSON message 4 (4_vital_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250624_211754/4_vital_db.json_transformed.json

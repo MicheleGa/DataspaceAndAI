@@ -1,0 +1,38 @@
+{
+  "patient_id": "INTEGER",
+  "age": "FLOAT",
+  "gender": "STRING",
+  "physical_characteristics": {
+    "height": "FLOAT",
+    "weight": "FLOAT"
+  },
+  "cardiovascular_conditions": {
+    "high_blood_pressure": "INTEGER",
+    "coronary_artery_disease": "INTEGER",
+    "diabetes": "INTEGER",
+    "arrythmia": "INTEGER",
+    "previous": {
+      "heart_attack": "INTEGER",
+      "stroke": "INTEGER"
+    },
+    "heart_failure": "INTEGER",
+    "aortic_stenosis": "INTEGER",
+    "valvular_heart_disease": "INTEGER",
+    "other_cv_diseases": "INTEGER"
+  },
+  "admission": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_location": "STRING",
+  "insurance": "STRING",
+  "language": "STRING",
+  "religion": "STRING",
+  "marital_status": "STRING",
+  "ethnicity": "STRING",
+  "emergency_department": {
+    "registration_time": "STRING",
+    "discharge_time": "STRING"
+  },
+  "diagnosis": "STRING"
+}

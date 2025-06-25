@@ -1,0 +1,23 @@
+{
+  "patient_id": "STRING",
+  "demographics": {
+    "age": "NUMBER",
+    "height": "NUMBER",
+    "weight": "NUMBER",
+    "gender": "STRING"
+  },
+  "medical_history": {
+    "high_blood_pressure": "BOOLEAN",
+    "coronary_artery_disease": "BOOLEAN",
+    "diabetes": "BOOLEAN",
+    "arrythmia": "BOOLEAN",
+    "previous": {
+      "heart_attack": "BOOLEAN",
+      "stroke": " BOOLEAN"
+    },
+    "heart_failure": "BOOLEAN",
+    "aortic_stenosis": " BOOLEAN",
+    "valvular_heart_disease": " BOOLEAN",
+    "other_cv_diseases": " BOOLEAN"
+  }
+}

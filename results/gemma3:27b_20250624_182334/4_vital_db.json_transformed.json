@@ -1,0 +1,67 @@
+{
+  "patient_id": 3062,
+  "age": 35.0,
+  "gender": "M",
+  "physical_characteristics": {
+    "height": 183.0,
+    "weight": 85.75,
+    "body_mass_index": 25.6
+  },
+  "cardiovascular_conditions": {
+    "high_blood_pressure": "n/a",
+    "coronary_artery_disease": "n/a",
+    "diabetes": "n/a",
+    "arrythmia": "n/a",
+    "previous": {
+      "heart_attack": "n/a",
+      "stroke": "n/a"
+    },
+    "heart_failure": "n/a",
+    "aortic_stenosis": "n/a",
+    "valvular_heart_disease": "n/a",
+    "other_cv_diseases": "n/a"
+  },
+  "admission": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_location": "n/a",
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "n/a",
+  "emergency_department": {
+    "registration_time": "n/a",
+    "discharge_time": "n/a"
+  },
+  "diagnosis": "n/a",
+  "vital_signs": {
+    "temperature": "n/a",
+    "heart_rate": "n/a",
+    "respiratory_rate": "n/a",
+    "oxygen_saturation": "n/a",
+    "systolic_blood_pressure": "n/a",
+    "diastolic_blood_pressure": "n/a"
+  },
+  "icd": {
+    "code": "n/a",
+    "version": "n/a",
+    "title": "n/a"
+  },
+  "surgical_details": {
+    "anesthesia": {
+      "start": 232,
+      "end": 5332.0,
+      "type": "Spinal"
+    },
+    "operation": {
+      "start": 2332,
+      "end": 4432,
+      "type": "Colorectal",
+      "name": "Hernia repair"
+    },
+    "department": "General surgery"
+  },
+  "death_in_hospital": 0
+}

@@ -1,0 +1,51 @@
+{
+  "patient_id": "INTEGER",
+  "age": "FLOAT",
+  "gender": "STRING",
+  "physical_characteristics": {
+    "height": "FLOAT",
+    "weight": "FLOAT"
+  },
+  "cardiovascular_conditions": {
+    "high_blood_pressure": "INTEGER",
+    "coronary_artery_disease": "INTEGER",
+    "diabetes": "INTEGER",
+    "arrythmia": "INTEGER",
+    "previous": {
+      "heart_attack": "INTEGER",
+      "stroke": "INTEGER"
+    },
+    "heart_failure": "INTEGER",
+    "aortic_stenosis": "INTEGER",
+    "valvular_heart_disease": "INTEGER",
+    "other_cv_diseases": "INTEGER"
+  },
+  "admission": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_location": "STRING",
+  "insurance": "STRING",
+  "language": "STRING",
+  "religion": "STRING",
+  "marital_status": "STRING",
+  "ethnicity": "STRING",
+  "emergency_department": {
+    "registration_time": "STRING",
+    "discharge_time": "STRING"
+  },
+  "diagnosis": "STRING",
+  "vital_signs": {
+    "temperature": "FLOAT",
+    "heart_rate": "FLOAT",
+    "respiratory_rate": "FLOAT",
+    "oxygen_saturation": "FLOAT",
+    "systolic_blood_pressure": "FLOAT",
+    "diastolic_blood_pressure": "FLOAT"
+  },
+  "icd": {
+    "code": "STRING",
+    "version": "FLOAT",
+    "title": "STRING"
+  }
+}

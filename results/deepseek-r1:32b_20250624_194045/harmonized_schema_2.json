@@ -1,0 +1,42 @@
+{
+  "id": "STRING",
+  "demographics": {
+    "age": "FLOAT",
+    "gender": "STRING",
+    "ethnicity": "STRING",
+    "marital_status": "STRING",
+    "religion": "STRING"
+  },
+  "vital_signs": {
+    "height": "FLOAT",
+    "weight": "FLOAT"
+  },
+  "admission_info": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_info": {
+    "location": "STRING"
+  },
+  "insurance": "STRING",
+  "language": "STRING",
+  "emergency_department": {
+    "reg_time": "DATETIME",
+    "out_time": "DATETIME"
+  },
+  "diagnosis": "STRING",
+  "medical_history": {
+    "high_blood_pressure": "INTEGER",
+    "coronary_artery_disease": "INTEGER",
+    "diabetes": "INTEGER",
+    "arrhythmia": "INTEGER",
+    "previous_events": {
+      "heart_attack": "INTEGER",
+      "stroke": "INTEGER"
+    },
+    "heart_failure": "INTEGER",
+    "aortic_stenosis": "INTEGER",
+    "valvular_heart_disease": "INTEGER",
+    "other_cv_diseases": "INTEGER"
+  }
+}
