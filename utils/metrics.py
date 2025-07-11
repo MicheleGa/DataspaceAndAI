@@ -1,51 +1,60 @@
 from sklearn.metrics.pairwise import cosine_similarity
 
 
-def calculate_structure_similarity(dict1, dict2):
+def calculate_structure_similarity(keys1, blocks1, keys2, blocks2):
     """
-    Calculates the Jaccard Similarity between the key structure of two JSON-like
-    data structures, giving equal weight to each nesting level.
-    The similarity is computed as the average of per-level Jaccard similarities.
+    Calculates the structural similarity between two JSON-like data structures
+    by comparing both:
+    - The number of keys per nesting level
+    - The number of nested blocks per nesting level (dicts or lists)
+
+    Similarity is computed using a per-level Jaccard-style score and averaged
+    over all levels.
 
     Args:
-        dict1 (dict): A dictionary where keys are nesting levels and values are
-                      the number of keys at that level (obtained from
-                      count_keys_per_level for the first JSON).
-        dict2 (dict): A dictionary where keys are nesting levels and values are
-                      the number of keys at that level (obtained from
-                      count_keys_per_level for the second JSON).
+        keys1 (dict): Key counts per level for JSON 1.
+        blocks1 (dict): Nested block counts per level for JSON 1.
+        keys2 (dict): Key counts per level for JSON 2.
+        blocks2 (dict): Nested block counts per level for JSON 2.
 
     Returns:
-        float: The Jaccard Similarity score between 0.0 and 1.0, representing
-               the structural similarity based on key counts per level,
-               where each level contributes equally.
-               Returns 1.0 if both input dictionaries are empty (perfectly similar empty structures).
+        float: Structural similarity score between 0.0 and 1.0.
     """
 
-    all_levels = set(dict1.keys()).union(set(dict2.keys()))
+    all_levels = set(keys1.keys()) | set(keys2.keys()) | set(blocks1.keys()) | set(blocks2.keys())
 
     if not all_levels:
-        # If both input dictionaries are empty (e.g., from an empty JSON or only primitive types),
-        # they are considered perfectly similar.
-        return 1.0
+        return 1.0  # Perfect similarity for empty structures
 
-    total_level_similarity = 0.0
+    key_sim_total = 0.0
+    block_sim_total = 0.0
 
     for level in all_levels:
-        count1 = dict1.get(level, 0)
-        count2 = dict2.get(level, 0)
-
-        # Calculate local Jaccard for this level
-        if max(count1, count2) == 0:
-            # If both counts are 0 for this level, it's a perfect match for an empty level
-            level_jaccard = 1.0
+        # --- Key similarity per level ---
+        k1 = keys1.get(level, 0)
+        k2 = keys2.get(level, 0)
+        if max(k1, k2) == 0:
+            key_sim = 1.0
         else:
-            level_jaccard = min(count1, count2) / max(count1, count2)
-        
-        total_level_similarity += level_jaccard
+            key_sim = min(k1, k2) / max(k1, k2)
+        key_sim_total += key_sim
 
-    # Average the similarities across all unique levels
-    return round(total_level_similarity / len(all_levels), 2)
+        # --- Block similarity per level ---
+        b1 = blocks1.get(level, 0)
+        b2 = blocks2.get(level, 0)
+        if max(b1, b2) == 0:
+            block_sim = 1.0
+        else:
+            block_sim = min(b1, b2) / max(b1, b2)
+        block_sim_total += block_sim
+
+    # Average over levels
+    avg_key_sim = key_sim_total / len(all_levels)
+    avg_block_sim = block_sim_total / len(all_levels)
+
+    # Final similarity is the average of both components
+    final_similarity = round((avg_key_sim + avg_block_sim) / 2, 2)
+    return final_similarity
 
 
 def calculate_semantic_similarity(embedding1, embedding2):

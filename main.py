@@ -1,5 +1,6 @@
 import os
 import argparse
+from distutils.util import strtobool
 import json
 import re
 import pprint
@@ -7,7 +8,7 @@ import pandas as pd
 from sentence_transformers import SentenceTransformer
 from model.harmonization_interface import OLLAMAHarmonizer
 from model.transformation_interface import OLLAMATransformer
-from utils.helpers import count_keys_per_level, get_json_embedding, generate_run_name
+from utils.helpers import count_keys_and_nested_blocks, get_json_embedding, extract_flat_keys, extract_key_paths, generate_run_name
 from utils.metrics import calculate_structure_similarity, calculate_semantic_similarity
 
 
@@ -20,11 +21,10 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
     ## ---- Initial Structure/Semantic Similarity Analysis ----
     print("\n## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----")
     
-    # Pass dictionaries directly to count_keys_per_level
-    original_dicts_per_level = [count_keys_per_level(msg) for msg in original_json_messages]
-    
-    # Assuming get_json_embedding can also handle a dictionary by converting it internally
-    original_embeddings = [get_json_embedding(msg, embedding_model) for msg in original_json_messages] 
+    # Pass dictionaries directly to count_keys_and_nested_blocks
+    original_dicts_per_level = [
+        count_keys_and_nested_blocks(msg) for msg in original_json_messages
+    ]
 
     # Save results to a dict
     initial_similarities = {
@@ -33,22 +33,34 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
         'x': [],
         'y': []
     }
+    
     for i in range(num_jsons):
         for j in range(i + 1, num_jsons):
             # Structural similarity
-            structure_sim = calculate_structure_similarity(original_dicts_per_level[i], original_dicts_per_level[j])
-            print(f"Key Structure Similarity between JSON {i+1} ({json_file_names[i]}) and JSON {j+1} ({json_file_names[j]}): {structure_sim:.2f}")
+            structure_sim = calculate_structure_similarity(
+                original_dicts_per_level[i][0], original_dicts_per_level[i][1],
+                original_dicts_per_level[j][0], original_dicts_per_level[j][1]
+            )
+            print(f"Key Structure Similarity between JSON {i+1} ({json_file_names[i]}) ↔ JSON {j+1} ({json_file_names[j]}): {structure_sim:.2f}")
 
-            # Semantic similarity
-            semantic_sim = calculate_semantic_similarity(original_embeddings[i], original_embeddings[j])
-            print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) and JSON {j+1} ({json_file_names[j]}): {semantic_sim:.2f}")
-            
-            # Store the results
+            # Semantic similarity (symmetric)
+            emb_i = get_json_embedding(
+                original_json_messages[i], 
+                embedding_model
+                )
+            emb_j = get_json_embedding(
+                original_json_messages[j], 
+                embedding_model
+                )
+            semantic_sim = calculate_semantic_similarity(emb_i, emb_j)
+            print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) ↔ JSON {j+1} ({json_file_names[j]}): {semantic_sim:.2f}")
+
+            # Store results
             initial_similarities['structure'].append(structure_sim)
             initial_similarities['semantic'].append(semantic_sim)
             initial_similarities['x'].append(json_file_names[i])
             initial_similarities['y'].append(json_file_names[j])
-
+    
     # Create a DataFrame for results visualization and analysis
     print(f"\nSaving initial similarity results to {os.path.join(args.results_folder, run_name, f'initial_similarity_results.csv')}...")
     df = pd.DataFrame(initial_similarities)
@@ -108,12 +120,10 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
         with open(final_harmonized_json_path, 'w') as f:
             json.dump(final_harmonized_dict, f, indent=2)
             
-        # Pass the dictionary directly to count_keys_per_level
-        dict_gen = count_keys_per_level(final_harmonized_dict)
+        # Pass the dictionary directly to count_keys_and_nested_blocks
+        dict_gen_keys, dict_gen_blocks = count_keys_and_nested_blocks(final_harmonized_dict)
         
         # Pass the dictionary to get_json_embedding as well
-        embedding_gen = get_json_embedding(final_harmonized_dict, embedding_model)
-        
         # Save results to a dict
         final_similarities = {
             'structure': [],
@@ -121,18 +131,35 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
             'x': [],
             'y': []
         }
-        for i, _ in enumerate(original_json_messages):
-            # Structural similarity
-            structure_similarity_gen = calculate_structure_similarity(original_dicts_per_level[i], dict_gen)
-            print(f"Key Structure Similarity between JSON {i+1} ({json_file_names[i]}) and Final Harmonized JSON: {structure_similarity_gen:.2f}")
+        
+        for i, original_json in enumerate(original_json_messages):
+            struct_sim = calculate_structure_similarity(
+                original_dicts_per_level[i][0], original_dicts_per_level[i][1],
+                dict_gen_keys, dict_gen_blocks
+            )
+            print(f"Key Structure Similarity between JSON {i+1} ({json_file_names[i]}) ↔ Final Harmonized JSON: {struct_sim:.2f}")
             
-            # Semantic similarity
-            semantic_similarity_gen = calculate_semantic_similarity(original_embeddings[i], embedding_gen)
-            print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) and Final Harmonized JSON: {semantic_similarity_gen:.2f}")
+            # Use original JSON keys as reference for harmonized
+            emb_original = get_json_embedding(
+                original_json, 
+                embedding_model
+            )
+            # Always aligns the keys with the final harmonized schema, differently from the initial pairwise analysis
+            if args.use_key_paths:
+                reference_keys = extract_key_paths(original_json)
+            else:
+                reference_keys = extract_flat_keys(original_json)
             
-            # Store the results
-            final_similarities['structure'].append(structure_similarity_gen)
-            final_similarities['semantic'].append(semantic_similarity_gen)
+            emb_harmonized_aligned = get_json_embedding(
+                final_harmonized_dict, embedding_model,
+                reference_keys=reference_keys, use_key_alignment=True
+            )
+            
+            semantic_sim = calculate_semantic_similarity(emb_original, emb_harmonized_aligned)
+            print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) ↔ Final Harmonized JSON: {semantic_sim:.2f}")
+            
+            final_similarities['structure'].append(struct_sim)
+            final_similarities['semantic'].append(semantic_sim)
             final_similarities['x'].append(json_file_names[i])
             final_similarities['y'].append('final_harmonized_schema')
             
@@ -199,7 +226,6 @@ def messages_transformation(run_name, original_json_messages, json_file_names, a
             print(f'No valid response provided by {args.model_name} for JSON message {i+1} during transformation.')
             
     
-    
 def main(args):
     
     # Run name generation
@@ -234,9 +260,9 @@ def main(args):
     ## Step 1 - Schema Harmonization
     schema_harmonization(run_name, original_json_messages, json_file_names, args) # Uncommented to ensure schema exists
     
-    ## Step 2 - JSON messages transformation
-    messages_transformation(run_name, original_json_messages, json_file_names, args)
-    
+    if args.transform:
+        ## Step 2 - JSON messages transformation
+        messages_transformation(run_name, original_json_messages, json_file_names, args)
     
     
 def parseargs():
@@ -247,8 +273,12 @@ def parseargs():
     parser.add_argument('--experiment_name', default='', type=str, help='name for the experiment')
     parser.add_argument('--model_name', default='llama3.2', type=str, help='LLM to adpot for the schema harmonization')
     parser.add_argument('--embedding_model_name', default='all-MiniLM-L6-v2', type=str, help='model to employ to produce JSON embeddings')
+    parser.add_argument('--transform', default='True', type=lambda x: bool(strtobool(x)), help='if set to true, the stream of JSON messages is transformed according to the harmonized schema')
     parser.add_argument('--temperature', default=0.7, type=float, help='temperature for the OLLAMA model (regulate creativity)')
     parser.add_argument('--top_p', default=0.95, type=float, help='probability that regulates the ratio of tokens the OLLAMA model choose for generating the response')
+    parser.add_argument('--use_key_paths', default='False', type=lambda x: bool(strtobool(x)), help='if set to true, use key paths instead of flat keys for JSON embedding')
+    parser.add_argument('--use_key_alignment', default='False', type=lambda x: bool(strtobool(x)), help='if set to True, align extracted keys with a reference set of keys')
+    parser.add_argument('--similarity_threshold', default=0.7, type=float, help='cosine similarity threshold for key alignment')
     
     args = parser.parse_args()
     return args
