@@ -1,5 +1,6 @@
 import os
 import argparse
+import pprint
 from distutils.util import strtobool
 import numpy as np
 import matplotlib.pyplot as plt
@@ -308,6 +309,11 @@ def parseargs():
 if __name__ == "__main__":
     
     args = parseargs()
+    
+    # Pretty print the parsed arguments
+    print("Run Configuration:")
+    pprint.pprint(vars(args))
+    print()
     
     if args.plot_different_llms:
         if args.plot_llms_heatmaps:

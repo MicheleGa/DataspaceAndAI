@@ -1,0 +1,63 @@
+{
+  "patient_id": 10006,
+  "age": "n/a",
+  "physical_characteristics": {
+    "height": "n/a",
+    "weight": "n/a",
+    "body_mass_index": "n/a"
+  },
+  "gender": "F",
+  "cardiovascular_conditions": {
+    "high_blood_pressure": "n/a",
+    "coronary_artery_disease": "n/a",
+    "diabetes": "n/a",
+    "arrythmia": "n/a",
+    "previous": {
+      "heart_attack": "n/a",
+      "stroke": "n/a"
+    },
+    "heart_failure": "n/a",
+    "aortic_stenosis": "n/a",
+    "valvular_heart_disease": "n/a",
+    "other_cv_diseases": "n/a"
+  },
+  "admission": {
+    "type": "EMERGENCY",
+    "location": "EMERGENCY ROOM ADMIT"
+  },
+  "discharge_location": "HOME HEALTH CARE",
+  "insurance": "Medicare",
+  "language": "POLI",
+  "religion": "CATHOLIC",
+  "marital_status": "SEPARATED",
+  "ethnicity": "BLACK/AFRICAN AMERICAN",
+  "emergency_department": {
+    "registration_time": "2164-10-23 16:43:00",
+    "discharge_time": "2164-10-23 23:00:00"
+  },
+  "diagnosis": "SEPSIS",
+  "vital_signs": {
+    "temperature": "n/a",
+    "heart_rate": "n/a",
+    "respiratory_rate": "n/a",
+    "oxygen_saturation": "n/a",
+    "systolic_blood_pressure": "n/a",
+    "diastolic_blood_pressure": "n/a"
+  },
+  "icd": {
+    "code": "n/a",
+    "version": "n/a",
+    "title": "n/a"
+  },
+  "surgical_procedure": {
+    "type": "n/a",
+    "name": "n/a"
+  },
+  "anesthesia": {
+    "start": "n/a",
+    "end": "n/a",
+    "type": "n/a"
+  },
+  "department": "n/a",
+  "death_in_hosp": "n/a"
+}

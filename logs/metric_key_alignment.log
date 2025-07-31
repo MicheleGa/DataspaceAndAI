@@ -1,0 +1,134 @@
+Run Configuration:
+{'dataset_folder': './data/json_data',
+ 'embedding_model_name': 'all-MiniLM-L6-v2',
+ 'experiment_name': '',
+ 'model_name': 'gemma3:27b',
+ 'results_folder': './results',
+ 'similarity_threshold': 0.7,
+ 'temperature': 0.7,
+ 'top_p': 0.95,
+ 'transform': True,
+ 'use_key_alignment': False,
+ 'use_key_paths': False}
+
+Loading JSON messages...
+Loaded 1_aurora_db.json
+Loaded 2_mimic_iii_db.json
+Loaded 3_mimic_iv_db.json
+Loaded 4_vital_db.json
+
+## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 2 (2_mimic_iii_db.json): 0.70
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 2 (2_mimic_iii_db.json): 0.41
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.88
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.27
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 4 (4_vital_db.json): 0.62
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 4 (4_vital_db.json): 0.50
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.79
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.39
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 4 (4_vital_db.json): 0.87
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 4 (4_vital_db.json): 0.55
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) ↔ JSON 4 (4_vital_db.json): 0.69
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) ↔ JSON 4 (4_vital_db.json): 0.35
+
+Saving initial similarity results to ./results/gemma3:27b_20250731_102743/initial_similarity_results.csv...
+
+## ---- AI Agent JSON Harmonization ----
+Processing JSON message 1 (1_aurora_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250731_102743/harmonized_schema_1.json
+Processing JSON message 2 (2_mimic_iii_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250731_102743/harmonized_schema_2.json
+Processing JSON message 3 (3_mimic_iv_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250731_102743/harmonized_schema_3.json
+Processing JSON message 4 (4_vital_db.json)...
+Harmonized schema saved to ./results/gemma3:27b_20250731_102743/harmonized_schema_4.json
+
+## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ Final Harmonized JSON: 0.32
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ Final Harmonized JSON: 0.99
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) ↔ Final Harmonized JSON: 0.32
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) ↔ Final Harmonized JSON: 0.96
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) ↔ Final Harmonized JSON: 0.30
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) ↔ Final Harmonized JSON: 0.78
+Key Structure Similarity between JSON 4 (4_vital_db.json) ↔ Final Harmonized JSON: 0.33
+Semantic Similarity between JSON 4 (4_vital_db.json) ↔ Final Harmonized JSON: 0.95
+
+Saving final similarity results to a DataFrame...
+Final similarity results saved to ./results/gemma3:27b_20250731_102743/final_similarity_results.csv.
+
+## ---- AI Agent JSON Message Transformation ----
+Transforming JSON message 1 (1_aurora_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250731_102743/1_aurora_db.json_transformed.json
+Transforming JSON message 2 (2_mimic_iii_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250731_102743/2_mimic_iii_db.json_transformed.json
+Transforming JSON message 3 (3_mimic_iv_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250731_102743/3_mimic_iv_db.json_transformed.json
+Transforming JSON message 4 (4_vital_db.json)...
+Transformed JSON saved to ./results/gemma3:27b_20250731_102743/4_vital_db.json_transformed.json
+Run Configuration:
+{'dataset_folder': './data/json_data',
+ 'embedding_model_name': 'all-MiniLM-L6-v2',
+ 'experiment_name': 'temp_0.5',
+ 'model_name': 'deepseek-r1:32b',
+ 'results_folder': './results',
+ 'similarity_threshold': 0.7,
+ 'temperature': 0.5,
+ 'top_p': 0.95,
+ 'transform': True,
+ 'use_key_alignment': False,
+ 'use_key_paths': False}
+
+Loading JSON messages...
+Loaded 1_aurora_db.json
+Loaded 2_mimic_iii_db.json
+Loaded 3_mimic_iv_db.json
+Loaded 4_vital_db.json
+
+## ---- Initial Structure/Semantic Similarity Analysis (Pairwise) ----
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 2 (2_mimic_iii_db.json): 0.70
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 2 (2_mimic_iii_db.json): 0.41
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.88
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.27
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 4 (4_vital_db.json): 0.62
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ JSON 4 (4_vital_db.json): 0.50
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.79
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 3 (3_mimic_iv_db.json): 0.39
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 4 (4_vital_db.json): 0.87
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) ↔ JSON 4 (4_vital_db.json): 0.55
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) ↔ JSON 4 (4_vital_db.json): 0.69
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) ↔ JSON 4 (4_vital_db.json): 0.35
+
+Saving initial similarity results to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/initial_similarity_results.csv...
+
+## ---- AI Agent JSON Harmonization ----
+Processing JSON message 1 (1_aurora_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/harmonized_schema_1.json
+Processing JSON message 2 (2_mimic_iii_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/harmonized_schema_2.json
+Processing JSON message 3 (3_mimic_iv_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/harmonized_schema_3.json
+Processing JSON message 4 (4_vital_db.json)...
+Harmonized schema saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/harmonized_schema_4.json
+
+## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
+Key Structure Similarity between JSON 1 (1_aurora_db.json) ↔ Final Harmonized JSON: 0.31
+Semantic Similarity between JSON 1 (1_aurora_db.json) ↔ Final Harmonized JSON: 0.98
+Key Structure Similarity between JSON 2 (2_mimic_iii_db.json) ↔ Final Harmonized JSON: 0.32
+Semantic Similarity between JSON 2 (2_mimic_iii_db.json) ↔ Final Harmonized JSON: 0.96
+Key Structure Similarity between JSON 3 (3_mimic_iv_db.json) ↔ Final Harmonized JSON: 0.30
+Semantic Similarity between JSON 3 (3_mimic_iv_db.json) ↔ Final Harmonized JSON: 0.77
+Key Structure Similarity between JSON 4 (4_vital_db.json) ↔ Final Harmonized JSON: 0.33
+Semantic Similarity between JSON 4 (4_vital_db.json) ↔ Final Harmonized JSON: 0.76
+
+Saving final similarity results to a DataFrame...
+Final similarity results saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/final_similarity_results.csv.
+
+## ---- AI Agent JSON Message Transformation ----
+Transforming JSON message 1 (1_aurora_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/1_aurora_db.json_transformed.json
+Transforming JSON message 2 (2_mimic_iii_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/2_mimic_iii_db.json_transformed.json
+Transforming JSON message 3 (3_mimic_iv_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/3_mimic_iv_db.json_transformed.json
+Transforming JSON message 4 (4_vital_db.json)...
+Transformed JSON saved to ./results/deepseek-r1:32b_temp_0.5_20250731_115901/4_vital_db.json_transformed.json

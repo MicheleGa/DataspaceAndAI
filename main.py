@@ -46,11 +46,13 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
             # Semantic similarity (symmetric)
             emb_i = get_json_embedding(
                 original_json_messages[i], 
-                embedding_model
+                embedding_model,
+                use_key_alignment=False
                 )
             emb_j = get_json_embedding(
                 original_json_messages[j], 
-                embedding_model
+                embedding_model,
+                use_key_alignment=False
                 )
             semantic_sim = calculate_semantic_similarity(emb_i, emb_j)
             print(f"Semantic Similarity between JSON {i+1} ({json_file_names[i]}) ↔ JSON {j+1} ({json_file_names[j]}): {semantic_sim:.2f}")
@@ -91,7 +93,6 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
                 harmonized_response_dict = json.loads(harmonized_response_str)
             except json.JSONDecodeError:
                 print(f"Error: Response from {args.model_name} is not a valid JSON. Skipping saving for JSON message {i+1}.")
-                # Changed from exit() to continue for robustness
                 continue 
 
             with open(harmonized_json_path, 'w') as f:
@@ -103,16 +104,13 @@ def schema_harmonization(run_name, original_json_messages, json_file_names, args
             
     
     ## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----
-    # After the loop, if we have a harmonized_response_str, perform the final similarity analysis
     if harmonized_response_str:
         print("\n## ---- Final Harmonized Schema Structure/Semantic Similarity Analysis ----")
         
-        # Parse the final harmonized response string back to a dict for structural analysis
         try:
             final_harmonized_dict = json.loads(harmonized_response_str)
         except json.JSONDecodeError:
             print("Error: Final harmonized response is not a valid JSON. Cannot perform similarity analysis.")
-            # Changed from exit() to return for robustness
             return
 
         # Save JSON

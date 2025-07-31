@@ -1,0 +1,65 @@
+{
+  "patient_identifier": "STRING",
+  "age": "NUMBER",
+  "height": "NUMBER",
+  "weight": "NUMBER",
+  "gender": "STRING",
+  "medical_history": {
+    "high_blood_pressure": "BOOLEAN",
+    "coronary_artery_disease": "BOOLEAN",
+    "diabetes": " BOOLEAN ",
+    "arrythmia": " BOOLEAN ",
+    "previous_conditions": {
+      "heart_attack": " BOOLEAN ",
+      "stroke": " BOOLEAN "
+    },
+    "heart_failure": " BOOLEAN ",
+    "aortic_stenosis": " BOOLEAN ",
+    "valvular_heart_disease": " BOOLEAN ",
+    "other_cardiovascular_diseases": " BOOLEAN "
+  },
+  "admission": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_location": "STRING",
+  "insurance": "STRING",
+  "language": "STRING",
+  "religion": "STRING",
+  "marital_status": "STRING",
+  "ethnicity": "STRING",
+  "emergency_department": {
+    "registration_time": "STRING",
+    "departure_time": "STRING"
+  },
+  "diagnosis": "STRING",
+  "vital_signs": {
+    "temperature": "NUMBER",
+    "heart_rate": "NUMBER",
+    "respiratory_rate": "NUMBER",
+    "oxygen_saturation": "NUMBER",
+    "blood_pressure": {
+      "systolic": "NUMBER",
+      "diastolic": "NUMBER"
+    }
+  },
+  "icd_diagnosis": {
+    "code": "STRING",
+    "version": "NUMBER",
+    "title": "STRING"
+  },
+  "anesthesia": {
+    "start_time": "NUMBER",
+    "end_time": "NUMBER",
+    "type": "STRING"
+  },
+  "surgery": {
+    "start_time": "NUMBER",
+    "end_time": "NUMBER",
+    "type": "STRING",
+    "procedure_name": "STRING"
+  },
+  "body_mass_index": "NUMBER",
+  "department": "STRING",
+  "in_hospital_death": "BOOLEAN"
+}

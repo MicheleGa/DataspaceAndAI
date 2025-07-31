@@ -1,0 +1,23 @@
+{
+  "patient_identifier": "10000032",
+  "gender": "F",
+  "vital_signs": {
+    "temperature": 98.2,
+    "heart_rate": 85.0,
+    "respiratory_rate": 18.0,
+    "oxygen_saturation": 98.0,
+    "blood_pressure": {
+      "systolic": 81.0,
+      "diastolic": 38.0
+    }
+  },
+  "icd_diagnosis": {
+    "code": "V08",
+    "version": 9.0,
+    "title": "ASYMPTOMATIC HIV INFECTION"
+  },
+  "emergency_department": {
+    "registration_time": "2180-07-22 16:24:00",
+    "departure_time": "2180-07-23 05:54:00"
+  }
+}
