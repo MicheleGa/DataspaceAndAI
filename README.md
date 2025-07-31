@@ -62,7 +62,27 @@ more instructions and infromation in *data/READEME.md*.
 Then, the Schema Harmonization and JSON message transformation tasks can be perfromed by choosing an LLM from the downloaded OLLAMA suite. For example:
 
 ```python
+cd ..
 python main.py --model_name gemma3
 ```
 
+or 
+
+```python
+cd ..
+./run.sh
+```
+
 which will generate a folder inside the *results* directory with harmonized schemas after each JSON message from the stream, CSV files with initial structural/semantic similarity (their definition is in *utils/metrics*) between each pair of JSON messages in the stream, final harmonized schema and structural/semantic similarity between each JSON message in the stream, the final harmonized schema, and the transformed JSON messages to the harmonized schema. In the *results* folder it is possible to run a script for visualize structural/semantic similarity (namely *results/data_visualization.py*).
+
+```python
+cd results
+python data_visualization.py -h
+```
+
+or 
+
+```python
+cd results
+./run.sh
+```
