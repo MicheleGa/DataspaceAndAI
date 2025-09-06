@@ -269,7 +269,7 @@ def parseargs():
     parser.add_argument('--dataset_folder', default='./data/json_data', type=str, help='path to the dataset folder')
     parser.add_argument('--results_folder', default='./results', type=str, help='path to the figures folder')
     parser.add_argument('--experiment_name', default='', type=str, help='name for the experiment')
-    parser.add_argument('--model_name', default='llama3.2', type=str, help='LLM to adpot for the schema harmonization')
+    parser.add_argument('--model_name', default='gemma3', type=str, help='LLM to adpot for the schema harmonization')
     parser.add_argument('--embedding_model_name', default='all-MiniLM-L6-v2', type=str, help='model to employ to produce JSON embeddings')
     parser.add_argument('--transform', default='True', type=lambda x: bool(strtobool(x)), help='if set to true, the stream of JSON messages is transformed according to the harmonized schema')
     parser.add_argument('--temperature', default=0.7, type=float, help='temperature for the OLLAMA model (regulate creativity)')
