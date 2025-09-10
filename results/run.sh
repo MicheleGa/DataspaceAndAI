@@ -27,7 +27,7 @@
 # LLM-based evaluation between 2 JSONs messages
 
 python agent_evaluator.py \
-    --dataset_folder ./deepseek-r1:32b_temp_0.5_20250731_115901 \
+    --dataset_folder ./gemma3:27b_20250731_102743 \
     --experiment_name test_evaluation \
     --model_name gemma3:27b \
     --temperature 0.7 \

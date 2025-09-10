@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "Low",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as the keys in the second JSON are present in the first one, even though the values have different types. However, the structural similarity is low because the second JSON is a subset of the first one, lacking many keys and nested blocks present in the first JSON (e.g., 'admission', 'discharge_location', 'insurance', 'emergency_department', 'diagnosis', 'vital_signs', 'icd_diagnosis', 'anesthesia', 'surgery', 'body_mass_index', 'department', 'in_hospital_death'). Overall, the harmonization process is partially successful in terms of semantic alignment, but it resulted in a significant loss of information and structural complexity."
+}

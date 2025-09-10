@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "Low",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as most of the keys correspond to the same concepts (e.g., patient_id, age, physical_characteristics, cardiovascular_conditions). However, the second JSON includes additional keys related to vital signs, ICD codes, surgical procedures, anesthesia, department, and death in hospital, which are not present in the first JSON. The structural similarity is low because the second JSON has significantly more keys and nested blocks at the root level and within certain nested objects (like adding 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia').  While the core information is largely consistent, the additional fields in the second JSON indicate an expansion of the data model, so the harmonization process has expanded the data model."
+}

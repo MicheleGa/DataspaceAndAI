@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "Low",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as the keys present in the first JSON are largely present in the second one, maintaining the same meaning. However, the second JSON is a subset of the first one, lacking several keys related to admission, discharge, insurance, demographics and emergency department details. This results in a low structural similarity, as the first JSON has significantly more keys at the root level and at nested levels. Overall, the harmonization process is partially successful, as the core patient information is consistent, but important contextual data is missing in the second JSON."
+}

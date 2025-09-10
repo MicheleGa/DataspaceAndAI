@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "High",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as the keys present in the first JSON are also present in the second one, with the same meaning. The only difference is that the second JSON is missing some keys at the root level ('anesthesia', 'surgery', 'body_mass_index', 'department', 'in_hospital_death'). Structurally, the two JSONs are highly similar, with the same nesting levels and organization. The missing keys in the second JSON contribute to a slight structural difference, but overall, the structural similarity remains high. Overall, the harmonization process was successful, but with some information loss in the second JSON."
+}

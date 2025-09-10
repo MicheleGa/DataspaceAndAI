@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "Low",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as the keys present in the first JSON are largely a superset of those in the second, and the shared keys have the same meaning. However, the structural similarity is low because the second JSON omits several keys present in the first, resulting in a significantly reduced number of keys at the root level and within nested blocks. The harmonization process seems partially successful, as the core patient information is consistent, but the absence of data points in the second JSON indicates a loss of information."
+}

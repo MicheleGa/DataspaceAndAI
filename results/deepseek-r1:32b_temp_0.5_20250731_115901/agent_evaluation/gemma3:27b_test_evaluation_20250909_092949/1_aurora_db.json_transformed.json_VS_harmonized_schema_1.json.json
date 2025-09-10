@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "Low",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as the keys in the second JSON are present, although with different data types, in the first JSON. The second JSON is a simplified version of the first one, lacking many keys present in the first JSON such as 'admission', 'discharge_location', 'insurance', 'emergency_department', 'diagnosis', 'vital_signs', 'icd_diagnosis', 'anesthesia', 'surgery', 'body_mass_index', 'department', and 'in_hospital_death'. This results in a lower structural similarity. Overall, the harmonization process appears to be a simplification or a partial data extraction, and could be considered successful if the goal was to create a minimal representation of the patient data."
+}

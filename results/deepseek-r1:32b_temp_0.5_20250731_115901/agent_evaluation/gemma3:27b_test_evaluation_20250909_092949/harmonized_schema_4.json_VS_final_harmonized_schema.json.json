@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "High",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity since the keys of the first JSON correspond to those of the second one and vice versa. The two JSONs have also the same structural similarity since they have the same number of keys and nested blocks per level. Overall, the harmonization process was successful."
+}

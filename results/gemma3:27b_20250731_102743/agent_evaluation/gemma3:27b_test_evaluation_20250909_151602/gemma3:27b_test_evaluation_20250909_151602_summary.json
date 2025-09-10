@@ -1,0 +1,182 @@
+{
+  "3_mimic_iv_db.json_transformed.json_VS_harmonized_schema_2.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity as they share the same nesting levels and key organization. The semantic similarity is also high; the keys in both JSONs largely correspond to the same concepts (e.g., 'patient_id', 'age', 'physical_characteristics', 'cardiovascular_conditions'). The second JSON defines the data types of the values, while the first one contains the actual data. This difference does not affect the semantic similarity, as the keys represent the same information. Overall, the harmonization process appears successful, with the second JSON potentially serving as a schema definition for the first."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_harmonized_schema_4.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high structural similarity as they share the same keys and nesting levels throughout. The semantic similarity is also high because the keys in both JSONs represent the same concepts (e.g., 'patient_id', 'age', 'physical_characteristics'). The second JSON defines the data type of each key, while the first JSON provides the actual values. This difference doesn't affect the semantic meaning, but rather provides metadata about the expected data types. Overall, the harmonization process appears successful, as the core data structure and meaning are preserved."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_final_harmonized_schema.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. The keys are identical across all levels of nesting, indicating a consistent organization of data. The only difference lies in the data types of the values associated with each key \u2013 the first JSON contains actual values, while the second JSON defines the expected data type for each key. This suggests that the second JSON serves as a schema or data model for the first JSON. Therefore, the harmonization process appears to be successful, as the structure and meaning of the data are preserved, with the second JSON providing a formal definition of the data types."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_2_mimic_iii_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. Both JSONs share the same keys and nesting levels, indicating a consistent structure. While the values differ (e.g., 'discharge_location', 'insurance', 'ethnicity', 'diagnosis', values within 'emergency_department'), the keys themselves represent the same concepts. The differences in values represent data variations for different patients, not structural or semantic discrepancies. The harmonization process appears successful as the core data elements are consistently represented across both JSONs."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity, maintaining the same nesting levels and key organization throughout. Semantically, the keys largely correspond, representing similar patient data points (e.g., patient_id, age, physical_characteristics, cardiovascular_conditions). Differences mainly lie in the data types and values provided (e.g., 'n/a' vs. numerical values, 'F' vs. 'M' for gender). The presence of 'n/a' values in both JSONs indicates missing data, which is consistent across the two messages. Overall, the harmonization process appears successful, as the core data structure and meaning are preserved, with variations primarily in the specific data values."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. They share the same keys at each level of nesting, indicating a consistent organization of patient data. While the values differ (e.g., specific age, height, weight, and vital signs), the keys themselves represent the same concepts. The second JSON provides more concrete values for many fields that are 'n/a' in the first, and includes additional information like anesthesia type and department. However, these are additions to existing concepts, not entirely new ones. Overall, the harmonization process appears successful, as the core data structure and meaning are preserved, and the second JSON enriches the data with specific values and additional details."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high semantic similarity. The keys in the first JSON largely correspond to those in the second, representing similar patient data concepts (e.g., 'patient_id', 'age', 'physical_characteristics', 'gender', 'cardiovascular_conditions'). The second JSON provides data types for the keys, which are not present in the first one. Structurally, the JSONs are highly similar, with matching nesting levels and key organization, particularly within the 'physical_characteristics' and 'cardiovascular_conditions' blocks. The harmonization process appears largely successful, with a consistent representation of patient information."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys in the first JSON correspond to those in the second JSON, representing the same concepts (e.g., 'patient_id', 'age', 'cardiovascular_conditions').  The second JSON provides data types, but the key names are identical. The structural similarity is also high; both JSONs have the same nesting levels and the same keys at each level. The harmonization process was successful in maintaining both the structure and the semantic meaning of the data."
+  },
+  "harmonized_schema_2.json_VS_harmonized_schema_4.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as most of the keys in the first JSON correspond to those in the second one. However, the second JSON includes additional keys such as 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department', and 'death_in_hosp' which are not present in the first JSON. Additionally, the second JSON includes 'body_mass_index' inside 'physical_characteristics' which is not present in the first one. This indicates a difference in the scope of information captured. Structurally, the two JSONs have different number of keys at the root level and different levels of nesting due to the added keys in the second JSON. Overall, the harmonization process appears successful in capturing the core information, but it is not complete due to the additional fields in the second JSON."
+  },
+  "harmonized_schema_2.json_VS_final_harmonized_schema.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as most of the keys correspond to the same concepts (e.g., patient_id, age, physical_characteristics, cardiovascular_conditions). However, the second JSON includes additional keys related to vital signs, ICD codes, surgical procedures, anesthesia, department, and death in hospital, which are not present in the first JSON. The structural similarity is low because the second JSON has significantly more keys and nested blocks at the root level and within certain nested objects (like adding 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia').  While the core information is largely consistent, the additional fields in the second JSON indicate an expansion of the data model, so the harmonization process has expanded the data model."
+  },
+  "harmonized_schema_2.json_VS_2_mimic_iii_db.json_transformed.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity. Most of the keys in the first JSON have corresponding keys in the second JSON, representing similar concepts (e.g., 'patient_id', 'age', 'gender', 'cardiovascular_conditions', 'admission', 'discharge_location', 'insurance', 'language', 'religion', 'marital_status', 'ethnicity', 'emergency_department', 'diagnosis'). However, the second JSON contains additional keys ('vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department', 'death_in_hosp') that are not present in the first JSON. The structural similarity is low due to the additional nested blocks and keys present in the second JSON. The harmonization process was partially successful, as core patient data is present in both JSONs, but the second JSON includes more detailed information not found in the first, indicating an extension of the data model rather than a strict harmonization."
+  },
+  "harmonized_schema_2.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as most of the keys in the second JSON have a corresponding meaning in the first JSON, even if the values are different. However, the second JSON introduces several new keys such as 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department' and 'death_in_hosp' which are not present in the first JSON. The structural similarity is low because the second JSON has more keys and nested blocks per level than the first one. Overall, the harmonization process is not fully successful due to the addition of new keys in the second JSON, indicating a divergence in the data models."
+  },
+  "harmonized_schema_2.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys in the first JSON generally correspond to those in the second, even though the second JSON provides specific values instead of data types. However, the structural similarity is low. The second JSON has significantly more keys at the root level and within nested blocks (e.g., 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department', 'death_in_hosp') that are not present in the first JSON. The harmonization process appears to have expanded the dataset with additional information, but it has also changed the structure. While the core patient information is preserved, the addition of many new keys indicates a substantial change in the schema. Therefore, while the harmonization process hasn't lost information, it is not a simple mapping and represents a significant schema evolution."
+  },
+  "harmonized_schema_2.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys present in the first JSON are largely present in the second one, maintaining the same meaning. However, the second JSON is a subset of the first one, lacking several keys related to admission, discharge, insurance, demographics and emergency department details. This results in a low structural similarity, as the first JSON has significantly more keys at the root level and at nested levels. Overall, the harmonization process is partially successful, as the core patient information is consistent, but important contextual data is missing in the second JSON."
+  },
+  "harmonized_schema_2.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high structural and semantic similarity. They share the same keys at every level of nesting, indicating a very strong correlation in the data they represent. The second JSON extends the first one by adding 'vital_signs' and 'icd' keys, but this is an addition, not a change to existing keys. Therefore, the harmonization process appears to be successful with the addition of new information."
+  },
+  "harmonized_schema_4.json_VS_final_harmonized_schema.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity since the keys of the first JSON correspond to those of the second one and vice versa. The two JSONs also have the same structural similarity since they have the same number of keys and nested blocks per level. Overall, the harmonization process was successful."
+  },
+  "harmonized_schema_4.json_VS_2_mimic_iii_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity, maintaining the same nesting levels and key organization throughout. The semantic similarity is also high, as all keys in the second JSON correspond to keys in the first JSON, representing the same concepts, even if the values differ (e.g., 'n/a' vs. data types like 'INTEGER' or 'FLOAT'). Although the values represent different data, the meaning of the keys remains consistent. This indicates a successful harmonization process, where the data structure is preserved while the actual data is populated."
+  },
+  "harmonized_schema_4.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity since the keys of the first JSON correspond to those of the second one. Both JSONs share the same nesting structure and key names at every level. While the first JSON defines the data types (INTEGER, FLOAT, STRING) and the second provides sample values or 'n/a', the core meaning of the data remains consistent. The structural similarity is also high, as the nesting and key organization are identical. Overall, the harmonization process was successful, demonstrating a strong alignment in data representation."
+  },
+  "harmonized_schema_4.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity as they maintain the same nesting levels and key organization throughout. The semantic similarity is also high; all keys in the first JSON have corresponding keys in the second JSON, representing the same concepts. While the first JSON defines data types (INTEGER, FLOAT, STRING) and the second provides actual values or 'n/a', the underlying meaning of each key remains consistent. Therefore, the harmonization process appears successful, effectively transferring the same data structure and semantics while populating it with actual data."
+  },
+  "harmonized_schema_4.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys present in the second JSON are a subset of those in the first JSON, and they represent the same concepts. However, the structural similarity is low because the first JSON contains many more keys and nested blocks at various levels (e.g., 'admission', 'discharge_location', 'insurance', 'emergency_department', 'diagnosis', 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department', 'death_in_hosp') which are absent in the second JSON. This suggests that the harmonization process may have involved a significant reduction in the scope of data captured, potentially leading to data loss. Although the core concepts are preserved, the absence of certain details in the second JSON could limit its utility."
+  },
+  "harmonized_schema_4.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity, as most of the keys present in the first JSON are also present in the second JSON with the same meaning. However, the second JSON is missing some keys present in the first one, such as 'body_mass_index' within 'physical_characteristics', 'surgical_procedure', 'anesthesia', 'department', and 'death_in_hosp'. This leads to a low structural similarity, as the first JSON is more comprehensive. Overall, the harmonization process is partially successful, as the core information is preserved, but some details are lost."
+  },
+  "final_harmonized_schema.json_VS_2_mimic_iii_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity as they share the same nesting levels and key organization. While the first JSON defines data types (INTEGER, FLOAT, STRING), the second JSON provides actual values or 'n/a' where data is missing. Semantically, the keys are consistent across both JSONs, representing the same concepts (e.g., patient_id, age, cardiovascular_conditions). The difference lies in the data itself \u2013 the first JSON is a schema definition, while the second is an instance of that schema with populated values. Therefore, the harmonization process is successful, as the underlying data model is consistent, and the second JSON conforms to the structure defined in the first."
+  },
+  "final_harmonized_schema.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity. The keys present in the first JSON are all present in the second JSON, representing the same concepts, even though the values have different types (e.g., INTEGER vs. FLOAT vs. STRING). The structural similarity is also high since both JSONs have the same nesting levels and the same keys at each level. While the value types differ, this doesn't impact the semantic meaning of the keys themselves. Overall, the harmonization process was successful, indicating a consistent data structure and meaning across both sources."
+  },
+  "final_harmonized_schema.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys in both JSONs represent the same concepts, even if the values have different types (e.g., STRING vs. FLOAT, INTEGER vs. 'n/a'). The structure is also very similar, with the same nested blocks and keys at each level. The harmonization process was successful, as the core data elements are present in both JSONs, although the value types differ, which might need further consideration depending on the downstream application."
+  },
+  "final_harmonized_schema.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys present in the second JSON are a subset of those present in the first one, and their meaning is consistent. However, the structural similarity is low because the first JSON contains many more keys and nested blocks at various levels (e.g., 'admission', 'discharge_location', 'insurance', 'emergency_department', 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department', 'death_in_hosp') that are absent in the second JSON. The harmonization process seems to be incomplete, as the second JSON lacks several data points available in the first one."
+  },
+  "final_harmonized_schema.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys present in the first JSON are largely present in the second one, with the same meaning. However, the second JSON is missing some keys present in the first one, such as 'body_mass_index' within 'physical_characteristics', and 'surgical_procedure', 'anesthesia', 'department' and 'death_in_hosp'. This leads to a low structural similarity, as the first JSON has more keys and deeper nesting at the root level. Overall, the harmonization process is partially successful, but requires the inclusion of the missing keys to be fully complete."
+  },
+  "2_mimic_iii_db.json_transformed.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity, maintaining the same nesting levels and key organization across both messages.  Semantically, the keys largely correspond, representing the same patient data categories (e.g., 'patient_id', 'age', 'cardiovascular_conditions'). While the values differ (e.g., 'age' is 'n/a' in the first JSON and a number in the second, and boolean values are used in the second JSON instead of strings), the key meanings are consistent.  The harmonization process appears successful, as the core data representation is maintained. Differences in value types (string vs. numeric/boolean) represent data normalization or more precise data capture in the second JSON."
+  },
+  "2_mimic_iii_db.json_transformed.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. Both share the same keys and nested structure at every level. While the values differ (e.g., age is a string 'n/a' in the first JSON and a float 35.0 in the second), the keys themselves represent the same concepts. The second JSON provides more specific data where the first uses 'n/a'.  There are a few keys where the value is more descriptive in the second JSON (e.g., anesthesia type is 'Spinal' instead of 'n/a'), but this doesn't indicate a lack of harmonization. Overall, the harmonization process appears successful, with the second JSON offering more detailed information where available."
+  },
+  "2_mimic_iii_db.json_transformed.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity because the keys in the first JSON largely correspond to those in the second JSON, representing similar concepts (e.g., 'patient_id', 'age', 'physical_characteristics', 'gender', 'cardiovascular_conditions'). However, the second JSON is significantly less detailed and omits many keys present in the first JSON, such as admission details, discharge location, insurance, language, religion, marital status, ethnicity, emergency department information, diagnosis, vital signs, ICD codes, surgical procedures, anesthesia details, department, and death information. The structural similarity is low because the first JSON is much more deeply nested and contains many more keys and nested blocks at each level than the second JSON.  While the core concepts are present in both, the lack of detail in the second JSON indicates an incomplete harmonization."
+  },
+  "2_mimic_iii_db.json_transformed.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys in the first JSON largely correspond to those in the second JSON, representing the same concepts (e.g., 'patient_id', 'age', 'cardiovascular_conditions'). The second JSON provides data types for each key, but the core meaning remains consistent. The structural similarity is also high, with both JSONs having a similar nesting structure and comparable levels of complexity. The harmonization process appears successful, as the essential information is preserved, and the second JSON clarifies the expected data types for each field."
+  },
+  "1_aurora_db.json_transformed.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. They share the same keys and nested structure at every level. The values differ (e.g., specific measurements for height, weight, anesthesia details, department), but the meaning of the keys remains consistent across both JSONs. The harmonization process was successful, as the core data elements are represented in both messages, and the structure is preserved."
+  },
+  "1_aurora_db.json_transformed.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys in the second JSON are present in the first one, representing the same concepts. However, the structural similarity is low because the first JSON contains many more keys and nested blocks than the second one. The second JSON represents a simplified version of the first one, focusing on the core patient characteristics. The harmonization process appears to be a simplification or abstraction of the original data, which might be acceptable depending on the use case, but it results in a loss of information."
+  },
+  "1_aurora_db.json_transformed.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity since the keys of the first JSON correspond to those of the second one, representing the same concepts. The second JSON defines the data type of each key, while the first JSON contains actual values, but the underlying meaning of the keys remains consistent. The structural similarity is also high, as both JSONs have the same nesting levels and key organization. Overall, the harmonization process was successful, with the second JSON providing a schema definition for the data present in the first JSON."
+  },
+  "4_vital_db.json_transformed.json_VS_harmonized_schema_1.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the keys in the second JSON are present in the first one, even if with different data types. However, the structural similarity is low because the second JSON is a simplified version of the first, missing many keys and nested blocks. The harmonization process appears to be a simplification or data type normalization rather than a full data integration, which could be acceptable depending on the use case. The absence of several keys in the second JSON indicates that information is being discarded."
+  },
+  "4_vital_db.json_transformed.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity, as the keys present in the first JSON largely correspond to those in the second JSON, even though the values have different datatypes. The second JSON defines the datatypes of the values, while the first JSON provides example values. The structural similarity is also high, with both JSONs sharing the same nesting levels and key organization. Overall, the harmonization process appears successful, with the second JSON serving as a schema definition for the data represented in the first JSON."
+  },
+  "harmonized_schema_1.json_VS_harmonized_schema_3.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs have high semantic similarity as the core concepts related to patient information and cardiovascular conditions are present in both. However, the second JSON includes additional information regarding admission details, discharge location, insurance, demographics, emergency department details, diagnosis, vital signs, and ICD codes which are absent in the first JSON. Structurally, the second JSON has significantly more keys and nested blocks at the root level and within those blocks than the first one. While the core meaning is preserved, the additional information in the second JSON indicates that the harmonization process hasn't fully converged on a minimal common representation. Therefore, the harmonization process can be considered partially successful, but requires further refinement to align the JSON structures."
+  }
+}

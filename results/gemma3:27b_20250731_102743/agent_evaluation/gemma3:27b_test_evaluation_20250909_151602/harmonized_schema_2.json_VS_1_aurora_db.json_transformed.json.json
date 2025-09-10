@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "Low",
+  "semantic_similarity": "High",
+  "verdict": "The two JSONs have high semantic similarity as most of the keys in the second JSON have a corresponding meaning in the first JSON, even if the values are different. However, the second JSON introduces several new keys such as 'vital_signs', 'icd', 'surgical_procedure', 'anesthesia', 'department' and 'death_in_hosp' which are not present in the first JSON. The structural similarity is low because the second JSON has more keys and nested blocks per level than the first one. Overall, the harmonization process is not fully successful due to the addition of new keys in the second JSON, indicating a divergence in the data models."
+}
