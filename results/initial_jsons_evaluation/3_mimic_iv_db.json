@@ -1,0 +1,18 @@
+{
+  "subject_id": 10000032,
+  "in_time": "2180-07-22 16:24:00",
+  "out_time": "2180-07-23 05:54:00",
+  "gender": "F",
+  "race": "WHITE",
+  "temperature": 98.2,
+  "heart_rate": 85.0,
+  "resp_rate": 18.0,
+  "o2_sat": 98.0,
+  "sbp": 81.0,
+  "dbp": 38.0,
+  "icd": {
+    "code": "V08",
+    "version": 9.0,
+    "title": "ASYMPTOMATIC HIV INFECTION"
+  }
+}

@@ -27,7 +27,7 @@
 # LLM-based evaluation between 2 JSONs messages
 
 python agent_evaluator.py \
-    --dataset_folder ./gemma3:27b_20250731_102743 \
+    --dataset_folder ./initial_jsons_evaluation \
     --experiment_name test_evaluation \
     --model_name gemma3:27b \
     --temperature 0.7 \

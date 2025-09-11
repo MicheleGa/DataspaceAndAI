@@ -1,0 +1,32 @@
+{
+  "2_mimic_iii_db.json_VS_1_aurora_db.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "Low",
+    "verdict": "The two JSONs have high structural similarity, both being flat with a similar number of keys at the root level. However, they exhibit low semantic similarity. The keys in the first JSON relate to patient admission details, demographics, and diagnosis, while the second JSON focuses on cardiovascular health indicators and patient vitals. There's minimal overlap in the meaning of the keys. Therefore, the harmonization process was not successful, as the two JSONs represent fundamentally different types of patient information."
+  },
+  "2_mimic_iii_db.json_VS_3_mimic_iv_db.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "Low",
+    "verdict": "The two JSONs have low semantic similarity. While both contain 'gender' and time-related information, the context and specific details are vastly different. The first JSON focuses on admission details, discharge location, and patient demographics, while the second focuses on vital signs and ICD codes.  There's limited overlap in meaning beyond these few shared keys. The structural similarity is relatively high as both JSONs are at the root level with a similar number of keys, but the *meaning* of those keys is largely disjoint. Overall, the harmonization process was not successful, as the JSONs represent different types of patient data and do not align semantically."
+  },
+  "2_mimic_iii_db.json_VS_4_vital_db.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "Low",
+    "verdict": "The two JSONs have low semantic similarity. While both contain a 'subject_id', the remaining keys represent vastly different concepts \u2013 one focusing on hospital admission and demographics, the other on surgical procedures and patient vitals. The structural similarity is relatively high as both are root-level objects with several keys, but the lack of overlapping meaning between those keys indicates a failed harmonization process. The keys represent completely different domains of information."
+  },
+  "1_aurora_db.json_VS_3_mimic_iv_db.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "Low",
+    "verdict": "The two JSONs have low semantic similarity. While both contain patient-related data, the keys represent entirely different aspects of a patient's condition. The first JSON focuses on cardiovascular history and risk factors, while the second focuses on vital signs and diagnoses. There's no overlap in meaning between the keys. Structurally, the JSONs are similar in that they both have a root level with several keys. However, the nested structures differ significantly. Overall, the harmonization process was not successful because the data represented by these JSONs is not semantically aligned."
+  },
+  "1_aurora_db.json_VS_4_vital_db.json": {
+    "structural_similarity": "Low",
+    "semantic_similarity": "Low",
+    "verdict": "The two JSONs have low semantic similarity. While both contain 'age', 'gender' (represented as 'sex' in the second JSON), 'height', and 'weight', the remaining keys represent vastly different concepts. The first JSON focuses on cardiovascular health history, while the second details surgical procedure information. Structurally, the JSONs are also very different, with the second JSON containing nested objects for 'anesthesia' and 'operation' which are absent in the first, and vice versa.  Overall, the harmonization process is not successful as the JSONs represent different data domains."
+  },
+  "3_mimic_iv_db.json_VS_4_vital_db.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "Low",
+    "verdict": "The two JSONs have low semantic similarity. While both contain a 'subject_id', the remaining keys represent entirely different concepts \u2013 one focuses on patient vitals and diagnosis (ICD code), while the other details surgical procedures, anesthesia, and demographic information. The structural similarity is relatively high as both JSONs are flat and have a comparable number of top-level keys. However, the lack of overlapping meaning between the keys indicates that the harmonization process was not successful. They represent data from very different domains."
+  }
+}

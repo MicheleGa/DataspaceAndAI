@@ -1,0 +1,21 @@
+{
+  "subject_id": 3062,
+  "anesthesia": {
+    "start": 232,
+    "end": 5332.0,
+    "type": "Spinal"
+  },
+  "operation": {
+    "start": 2332,
+    "end": 4432,
+    "type": "Colorectal",
+    "name": "Hernia repair"
+  },
+  "age": 35.0,
+  "sex": "M",
+  "height": 183.0,
+  "weight": 85.75,
+  "body_mass_index": 25.6,
+  "department": "General surgery",
+  "death_in_hosp": 0
+}

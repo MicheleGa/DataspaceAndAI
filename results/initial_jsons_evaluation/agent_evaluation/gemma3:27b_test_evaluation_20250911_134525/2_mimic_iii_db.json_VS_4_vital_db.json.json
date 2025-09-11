@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "High",
+  "semantic_similarity": "Low",
+  "verdict": "The two JSONs have low semantic similarity. While both contain a 'subject_id', the remaining keys represent vastly different concepts \u2013 one focusing on hospital admission and demographics, the other on surgical procedures and patient vitals. The structural similarity is relatively high as both are root-level objects with several keys, but the lack of overlapping meaning between those keys indicates a failed harmonization process. The keys represent completely different domains of information."
+}

@@ -3,6 +3,7 @@ __pycache__
 
 # Ignore everything in data/
 data/*
+attempts/
 
 # But not JSON or CSV files in data/
 !data/*.json

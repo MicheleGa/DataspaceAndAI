@@ -55,10 +55,10 @@ Follow the preprocessing in the *data* folder to build the JSON messages that wi
 
 ```bash
 cd data
-python preprocessing.py
+python preprocessing.py --nest True
 ```
 
-more instructions and infromation in *data/READEME.md*.
+more instructions and infromation in *data/README.md*.
 Then, the Schema Harmonization and JSON message transformation tasks can be perfromed by choosing an LLM from the downloaded OLLAMA suite. For example:
 
 ```python
