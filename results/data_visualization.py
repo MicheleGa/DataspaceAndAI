@@ -214,7 +214,7 @@ def plot_similarity_heatmaps(csv_paths, similarity_type, save_path='./', output_
     sns.heatmap(
         base_similarity_matrix,
         annot=True,
-        cmap='viridis',
+        cmap='YlGnBu',
         fmt=".2f",    
         linewidths=.5,
         linecolor='black',
@@ -260,7 +260,7 @@ def plot_similarity_heatmaps(csv_paths, similarity_type, save_path='./', output_
             sns.heatmap(
                 llm_similarity_matrix,
                 annot=True,
-                cmap='viridis',
+                cmap='YlGnBu',
                 fmt=".2f",
                 linewidths=.5,
                 linecolor='black',
