@@ -1,4 +1,4 @@
-# An AI Driven Harmonized Data Ingestion: Vision For Seamless Cross-Domain Data Integration
+# LLM-Based Harmonized Data Ingestion for Dataspace: A Novel System for Automating Data Ingestion Across Heterogeneous Data Sources
 
 ## ⚙️ Setup
 Install OLLAMA on your laptop from their official [website](https://ollama.com/download), more infromations can also be found at their GitHub [repo](https://github.com/ollama/ollama). Choose your OS, in this case we are on Ubuntu 22.04, Jammy jellifish.
