@@ -264,11 +264,11 @@ def plot_similarity_heatmaps(csv_paths, similarity_type, save_path='./', output_
                 fmt=".2f",
                 linewidths=.5,
                 linecolor='black',
-                cbar_kws={'label': f'{similarity_type.capitalize()} Similarity'}
+                cbar_kws={'label': 'Similarity'}
             )
-            plt.title(f'{similarity_type.capitalize()} Similarities with Final Harmonized Schema ({llm_name})', fontsize=14)
-            plt.xlabel('JSONs', fontsize=12)
-            plt.ylabel('JSONs', fontsize=12)
+            #plt.title(f'{similarity_type.capitalize()} Similarities with Final Harmonized Schema ({llm_name})', fontsize=14)
+            plt.xlabel('JSON Schemas', fontsize=12)
+            plt.ylabel('JSON Schemas', fontsize=12)
             plt.xticks(rotation=45, ha='right')
             plt.yticks(rotation=0)
             plt.tight_layout()
