@@ -1,0 +1,38 @@
+{
+  "patient_id": "STRING",
+  "age": "INTEGER",
+  "height": "FLOAT",
+  "weight": "FLOAT",
+  "gender": "STRING",
+  "cardiovascular_conditions": {
+    "dbp": "FLOAT",
+    "sbp": "FLOAT"
+  },
+  "previous_conditions": {
+    "heart_attack": "INTEGER",
+    "stroke": "INTEGER"
+  },
+  "admission_details": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_details": {
+    "location": "STRING"
+  },
+  "insurance": "STRING",
+  "language": "STRING",
+  "religion": "STRING",
+  "marital_status": "STRING",
+  "ethnicity": "STRING",
+  "vital_signs": {
+    "temperature": "FLOAT",
+    "heart_rate": "FLOAT",
+    "resp_rate": "FLOAT",
+    "o2_sat": "FLOAT"
+  },
+  "diagnosis": {
+    "code": "STRING",
+    "version": "FLOAT",
+    "title": "STRING"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "3_mimic_iv_db.json_transformed.json_VS_2_mimic_iii_db.json_transformed.json": {
+    "error": "model runner has unexpectedly stopped, this may be due to resource limitations or an internal error, check ollama server logs for details (status code: 500)"
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity, maintaining the same nesting levels and key organization throughout.  Semantically, the keys largely correspond, representing the same patient data points (e.g., 'patient_id', 'age', 'physical_characteristics', 'cardiovascular_conditions'). While the *values* differ (e.g., 'age' is 'n/a' in the first JSON and 33.0 in the second, and many cardiovascular condition flags are 'n/a' vs 0), the *meaning* of the keys is consistent.  The harmonization process appears successful, as the core data elements are present in both JSONs, even if the specific values are missing or represented differently. The differences in values are expected and do not indicate a failure of harmonization, but rather reflect different data availability or representation choices."
+  },
+  "3_mimic_iv_db.json_transformed.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity, maintaining the same nesting levels and key organization throughout. The semantic similarity is also high, as most keys correspond directly or have clear equivalents between the two JSONs (e.g., 'patient_id', 'age', 'physical_characteristics', 'cardiovascular_conditions'). There are some differences in the values provided (e.g., specific values for height, weight, BMI, and the presence of actual data in the second JSON where the first uses 'n/a'), and some keys have more detailed information in the second JSON (e.g., 'surgical_procedure' has a 'name', 'anesthesia' has 'type', 'start_time', and 'end_time'). However, these differences represent data enrichment rather than semantic divergence. Overall, the harmonization process appears successful, with the second JSON providing more complete and specific data while maintaining the overall structure and meaning of the first."
+  },
+  "2_mimic_iii_db.json_transformed.json_VS_1_aurora_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural similarity, maintaining the same nesting levels and key organization throughout.  Semantically, the keys largely correspond, representing the same patient data points (e.g., 'patient_id', 'age', 'physical_characteristics', 'cardiovascular_conditions'). While the values differ (e.g., 'age' is a string 'n/a' in the first JSON and a float 33.0 in the second, and boolean 0/1 are used in the second JSON for cardiovascular conditions), the keys themselves represent the same concepts. The harmonization process appears successful, as the core data elements are present in both JSONs, even if the specific values and data types vary. The differences in values are expected and represent actual data variations, not structural or semantic issues."
+  },
+  "2_mimic_iii_db.json_transformed.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. Both JSONs share the same top-level keys and nested structure, indicating a consistent organization of patient data. While the values differ (e.g., specific values for age, height, weight, and diagnosis), the keys themselves represent the same concepts. There are a few instances where the second JSON provides more specific values (e.g., 'Hernia repair' for 'surgical_procedure.name', 'Spinal' for 'anesthesia.type', and numerical values for 'anesthesia.start_time' and 'anesthesia.end_time') where the first JSON has 'n/a', but the core meaning of the keys remains consistent. The harmonization process appears successful, as the data is organized in a comparable manner, allowing for meaningful integration and analysis."
+  },
+  "1_aurora_db.json_transformed.json_VS_4_vital_db.json_transformed.json": {
+    "structural_similarity": "High",
+    "semantic_similarity": "High",
+    "verdict": "The two JSONs exhibit high structural and semantic similarity. They share the same keys and nesting levels, indicating a consistent organization of patient data. The primary differences lie in the values assigned to certain keys (e.g., 'body_mass_index', 'surgical_procedure', 'anesthesia', 'department', 'death_in_hospital'), reflecting specific details for each patient. The harmonization process appears successful, as the core data elements are consistently represented across both JSONs. The differences in values are expected and do not indicate a failure in harmonization, but rather a reflection of individual patient characteristics."
+  }
+}

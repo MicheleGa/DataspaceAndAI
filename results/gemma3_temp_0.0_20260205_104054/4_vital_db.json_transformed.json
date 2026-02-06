@@ -1,0 +1,49 @@
+{
+  "patient_id": "3062",
+  "age": 35.0,
+  "height": 1.83,
+  "weight": 85.75,
+  "gender": "M",
+  "cardiovascular_conditions": {
+    "dbp": "n/a",
+    "sbp": "n/a"
+  },
+  "previous_conditions": {
+    "heart_attack": 0,
+    "stroke": "n/a"
+  },
+  "admission_details": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_details": {
+    "location": "n/a"
+  },
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "n/a",
+  "vital_signs": {
+    "temperature": "n/a",
+    "heart_rate": "n/a",
+    "resp_rate": "n/a",
+    "o2_sat": "n/a"
+  },
+  "diagnosis": {
+    "code": "n/a",
+    "version": "n/a",
+    "title": "n/a"
+  },
+  "operation": {
+    "start": 2332.0,
+    "end": 4432.0,
+    "type": "Colorectal",
+    "name": "Hernia repair"
+  },
+  "anesthesia": {
+    "start": 232.0,
+    "end": 5332.0,
+    "type": "Spinal"
+  }
+}

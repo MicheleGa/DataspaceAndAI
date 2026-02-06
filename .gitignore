@@ -1,11 +1,15 @@
 venv
 __pycache__
 
-# Ignore everything in data/
-data/*
-attempts/
+# Aurora data
+data/aurora_db/features.tsv
+data/aurora_db/measurements_auscultatory.tsv
+data/aurora_db/measurements_oscillometric.tsv
+data/aurora_db/participants.tsv
 
-# But not JSON or CSV files in data/
-!data/*.json
-!data/*.py
-!data/json_data
+# MIMIC-III data
+data/mimic_iii_db/ed
+
+# MIMIC-IV data
+data/mimic_iv_db/ed
+

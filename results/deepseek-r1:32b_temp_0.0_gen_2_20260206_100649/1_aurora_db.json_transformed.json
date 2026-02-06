@@ -1,0 +1,66 @@
+{
+  "patient_id": "o000",
+  "demographics": {
+    "age": 33,
+    "height": 1.73,
+    "weight": 90.72,
+    "gender": "M",
+    "race": "n/a"
+  },
+  "medical_history": {
+    "high_blood_pressure": false,
+    "coronary_artery_disease": false,
+    "diabetes": false,
+    "arrythmia": false,
+    "previous": {
+      "heart_attack": false,
+      "stroke": false
+    },
+    "heart_failure": false,
+    "aortic_stenosis": false,
+    "valvular_heart_disease": false,
+    "other_cv_diseases": false
+  },
+  "admission": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_location": "n/a",
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "n/a",
+  "ed": {
+    "reg_time": "n/a",
+    "out_time": "n/a"
+  },
+  "diagnosis": "n/a",
+  "vitals": {
+    "temperature": "n/a",
+    "heart_rate": "n/a",
+    "respiratory_rate": "n/a",
+    "oxygen_saturation": "n/a",
+    "systolic_blood_pressure": "n/a",
+    "diastolic_blood_pressure": "n/a"
+  },
+  "icd": {
+    "code": "n/a",
+    "version": "n/a",
+    "title": "n/a"
+  },
+  "anesthesia": {
+    "start_time": "n/a",
+    "end_time": "n/a",
+    "type": "n/a"
+  },
+  "operation": {
+    "start_time": "n/a",
+    "end_time": "n/a",
+    "type": "n/a",
+    "name": "n/a"
+  },
+  "body_mass_index": "n/a",
+  "department": "n/a",
+  "death_in_hospital": false
+}

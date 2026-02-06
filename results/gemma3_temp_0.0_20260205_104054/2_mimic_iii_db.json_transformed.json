@@ -1,0 +1,49 @@
+{
+  "patient_id": "10006",
+  "age": "n/a",
+  "height": "n/a",
+  "weight": "n/a",
+  "gender": "F",
+  "cardiovascular_conditions": {
+    "dbp": "n/a",
+    "sbp": "n/a"
+  },
+  "previous_conditions": {
+    "heart_attack": "0",
+    "stroke": "0"
+  },
+  "admission_details": {
+    "type": "EMERGENCY",
+    "location": "EMERGENCY ROOM ADMIT"
+  },
+  "discharge_details": {
+    "location": "HOME HEALTH CARE"
+  },
+  "insurance": "Medicare",
+  "language": "POLI",
+  "religion": "CATHOLIC",
+  "marital_status": "SEPARATED",
+  "ethnicity": "BLACK/AFRICAN AMERICAN",
+  "vital_signs": {
+    "temperature": "n/a",
+    "heart_rate": "n/a",
+    "resp_rate": "n/a",
+    "o2_sat": "n/a"
+  },
+  "diagnosis": {
+    "code": "SEPSIS",
+    "version": "n/a",
+    "title": "SEPSIS"
+  },
+  "operation": {
+    "start": "n/a",
+    "end": "n/a",
+    "type": "n/a",
+    "name": "n/a"
+  },
+  "anesthesia": {
+    "start": "n/a",
+    "end": "n/a",
+    "type": "n/a"
+  }
+}

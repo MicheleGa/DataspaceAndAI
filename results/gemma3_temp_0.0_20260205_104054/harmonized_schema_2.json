@@ -1,0 +1,26 @@
+{
+  "patient_id": "STRING",
+  "age": "INTEGER",
+  "height": "FLOAT",
+  "weight": "FLOAT",
+  "gender": "STRING",
+  "cardiovascular_conditions": {
+    "diagnosis": "STRING"
+  },
+  "previous_conditions": {
+    "heart_attack": "INTEGER",
+    "stroke": "INTEGER"
+  },
+  "admission_details": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_details": {
+    "location": "STRING"
+  },
+  "insurance": "STRING",
+  "language": "STRING",
+  "religion": "STRING",
+  "marital_status": "STRING",
+  "ethnicity": "STRING"
+}

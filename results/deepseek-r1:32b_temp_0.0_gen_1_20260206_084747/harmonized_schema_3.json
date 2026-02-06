@@ -1,0 +1,54 @@
+{
+  "patient_id": "STRING",
+  "demographics": {
+    "age": "NUMBER",
+    "height": "NUMBER",
+    "weight": "NUMBER",
+    "gender": "STRING",
+    "race": "STRING"
+  },
+  "medical_history": {
+    "high_blood_pressure": "BOOLEAN",
+    "coronary_artery_disease": "BOOLEAN",
+    "diabetes": " BOOLEAN",
+    "arrythmia": "BOOLEAN",
+    "previous_conditions": {
+      "heart_attack": "BOOLEAN",
+      "stroke": "BOOLEAN"
+    },
+    "current_diagnoses": {
+      "heart_failure": "BOOLEAN",
+      "aortic_stenosis": "BOOLEAN",
+      "valvular_heart_disease": "BOOLEAN",
+      "other_cv_diseases": "BOOLEAN"
+    }
+  },
+  "admission": {
+    "type": "STRING",
+    "location": "STRING"
+  },
+  "discharge_location": "STRING",
+  "insurance": "STRING",
+  "language": "STRING",
+  "religion": "STRING",
+  "marital_status": "STRING",
+  "ethnicity": "STRING",
+  "emergency_department": {
+    "registration_time": "STRING",
+    "departure_time": "STRING"
+  },
+  "diagnosis": "STRING",
+  "vitals": {
+    "temperature": "NUMBER",
+    "heart_rate": "NUMBER",
+    "respiratory_rate": "NUMBER",
+    "oxygen_saturation": "NUMBER",
+    "systolic_blood_pressure": "NUMBER",
+    "diastolic_blood_pressure": "NUMBER"
+  },
+  "icd_diagnosis": {
+    "code": "STRING",
+    "version": "NUMBER",
+    "title": "STRING"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "patient_id": "10000032",
+  "demographics": {
+    "age": "n/a",
+    "height": "n/a",
+    "weight": "n/a",
+    "gender": "F",
+    "race": "WHITE"
+  },
+  "medical_history": {
+    "high_blood_pressure": "n/a",
+    "coronary_artery_disease": "n/a",
+    "diabetes": "n/a",
+    "arrythmia": "n/a",
+    "previous": {
+      "heart_attack": "n/a",
+      "stroke": "n/a"
+    },
+    "heart_failure": "n/a",
+    "aortic_stenosis": "n/a",
+    "valvular_heart_disease": "n/a",
+    "other_cv_diseases": "n/a"
+  },
+  "admission": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_location": "n/a",
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "n/a",
+  "ed": {
+    "reg_time": "2180-07-22 16:24:00",
+    "out_time": "2180-07-23 05:54:00"
+  },
+  "diagnosis": "n/a",
+  "vitals": {
+    "temperature": 36.78,
+    "heart_rate": 85.0,
+    "respiratory_rate": 18.0,
+    "oxygen_saturation": 98.0,
+    "systolic_blood_pressure": 81.0,
+    "diastolic_blood_pressure": 38.0
+  },
+  "icd": {
+    "code": "V08",
+    "version": 9.0,
+    "title": "ASYMPTOMATIC HIV INFECTION"
+  },
+  "anesthesia": {
+    "start_time": "n/a",
+    "end_time": "n/a",
+    "type": "n/a"
+  },
+  "operation": {
+    "start_time": "n/a",
+    "end_time": "n/a",
+    "type": "n/a",
+    "name": "n/a"
+  },
+  "body_mass_index": "n/a",
+  "department": "n/a",
+  "death_in_hospital": false
+}

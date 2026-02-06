@@ -1,8 +1,8 @@
 {
   "pid": "o000",
   "age": 33.0,
-  "height": 68.0,
-  "weight": 200.0,
+  "height": 1.73,
+  "weight": 90.72,
   "gender": "M",
   "high_blood_pressure": 0,
   "coronary_artery_disease": 0,

@@ -1,0 +1,5 @@
+structure,semantic,x,y
+0.5,0.69,1_aurora_db.json,final_harmonized_schema
+0.51,0.96,2_mimic_iii_db.json,final_harmonized_schema
+0.48,0.89,3_mimic_iv_db.json,final_harmonized_schema
+0.53,0.63,4_vital_db.json,final_harmonized_schema

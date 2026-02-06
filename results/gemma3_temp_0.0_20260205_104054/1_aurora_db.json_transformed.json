@@ -1,0 +1,49 @@
+{
+  "patient_id": "o000",
+  "age": 33.0,
+  "height": 1.73,
+  "weight": 90.72,
+  "gender": "M",
+  "cardiovascular_conditions": {
+    "dbp": "n/a",
+    "sbp": "n/a"
+  },
+  "previous_conditions": {
+    "heart_attack": 0,
+    "stroke": 0
+  },
+  "admission_details": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_details": {
+    "location": "n/a"
+  },
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "n/a",
+  "vital_signs": {
+    "temperature": "n/a",
+    "heart_rate": "n/a",
+    "resp_rate": "n/a",
+    "o2_sat": "n/a"
+  },
+  "diagnosis": {
+    "code": "n/a",
+    "version": "n/a",
+    "title": "n/a"
+  },
+  "operation": {
+    "start": "n/a",
+    "end": "n/a",
+    "type": "n/a",
+    "name": "n/a"
+  },
+  "anesthesia": {
+    "start": "n/a",
+    "end": "n/a",
+    "type": "n/a"
+  }
+}

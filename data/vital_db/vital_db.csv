@@ -1,0 +1,11 @@
+subject_id,anesthesia_start,anesthesia_end,anesthesia_type,operation_start,operation_end,operation_type,operation_name,age,sex,height,weight,body_mass_index,department,death_in_hosp
+3062,232,5332.0,Spinal,2332,4432,Colorectal,Hernia repair,35.0,M,1.83,85.75,25.6,General surgery,0
+1955,475,6775.0,General,3775,6596,Minor resection,Lung wedge resection,81.0,M,1.76,51.9,16.8,Thoracic surgery,0
+172,-731,5569.0,General,1369,4069,Vascular,Closure of arteriovenous fistula,17.0,F,1.54,45.6,19.3,General surgery,0
+312,-378,21882.0,General,2682,21582,Colorectal,Anterior resection,50.0,M,1.67,69.0,24.8,General surgery,0
+4910,-185,7615.0,General,1315,6115,Others,Excision,40.0,F,1.55,45.9,19.1,General surgery,0
+1019,-1614,12126.0,General,2826,11526,Colorectal,Excision,39.0,F,1.59,52.6,20.9,General surgery,0
+370,-475,7625.0,General,2825,7325,Others,Radical excision of cervical lymph nodes,52.0,M,1.66,49.9,18.1,Thoracic surgery,0
+5641,-1143,10737.0,General,2937,9837,Hepatic,Liver segmentectomy,77.0,M,1.59,65.85,26.0,General surgery,0
+3630,-1013,4507.0,General,2107,3607,Others,Rigid bronchoscopy,69.0,M,1.71,59.3,20.2,Thoracic surgery,0
+3864,-525,22335.0,General,2535,21435,Colorectal,Hemicolectomy,75.0,F,1.56,55.25,22.6,General surgery,0

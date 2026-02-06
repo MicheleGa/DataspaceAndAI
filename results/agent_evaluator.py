@@ -42,6 +42,9 @@ def main(args):
     results_folder = os.path.join(args.dataset_folder, 'agent_evaluation', run_name)
     os.makedirs(results_folder, exist_ok=True)
     
+    # Maintain only final transformed JSONs for pairwise evaluation
+    json_file_names = [name for name in json_file_names if name[0].isdigit()]
+
     results = {}
     for file1, file2 in combinations(json_file_names, 2):  # unique pairs
         print(f"\nComparing {file1} <-> {file2}")

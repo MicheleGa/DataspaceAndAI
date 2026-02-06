@@ -1,0 +1,5 @@
+{
+  "structural_similarity": "High",
+  "semantic_similarity": "Low",
+  "verdict": "The two JSONs have low semantic similarity because the keys in the first JSON relate to patient admission details (diagnosis, admission type, discharge location, demographics), while the keys in the second JSON relate to cardiovascular health and physical characteristics. There is no overlap in meaning between the keys of the two JSONs. The structural similarity is high because both JSONs have a similar number of keys at the root level and a similar level of nesting (one nested block each). Overall, the harmonization process was not successful."
+}

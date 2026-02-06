@@ -1,0 +1,17 @@
+{
+  "pid": "n/a",
+  "age": "n/a",
+  "height": "n/a",
+  "weight": "n/a",
+  "gender": "F",
+  "high_blood_pressure": "n/a",
+  "coronary_artery_disease": "n/a",
+  "diabetes": "n/a",
+  "arrythmia": "n/a",
+  "previous_heart_attack": "n/a",
+  "previous_stroke": "n/a",
+  "heart_failure": "n/a",
+  "aortic_stenosis": "n/a",
+  "valvular_heart_disease": "n/a",
+  "other_cv_diseases": "n/a"
+}

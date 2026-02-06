@@ -1,0 +1,49 @@
+{
+  "patient_id": "10000032",
+  "age": 0.0,
+  "height": 0.0,
+  "weight": 0.0,
+  "gender": "F",
+  "cardiovascular_conditions": {
+    "dbp": 38.0,
+    "sbp": 81.0
+  },
+  "previous_conditions": {
+    "heart_attack": 0,
+    "stroke": 0
+  },
+  "admission_details": {
+    "type": "n/a",
+    "location": "n/a"
+  },
+  "discharge_details": {
+    "location": "n/a"
+  },
+  "insurance": "n/a",
+  "language": "n/a",
+  "religion": "n/a",
+  "marital_status": "n/a",
+  "ethnicity": "WHITE",
+  "vital_signs": {
+    "temperature": 36.78,
+    "heart_rate": 85.0,
+    "resp_rate": 18.0,
+    "o2_sat": 98.0
+  },
+  "diagnosis": {
+    "code": "V08",
+    "version": 9.0,
+    "title": "ASYMPTOMATIC HIV INFECTION"
+  },
+  "operation": {
+    "start": 0.0,
+    "end": 0.0,
+    "type": "n/a",
+    "name": "n/a"
+  },
+  "anesthesia": {
+    "start": 0.0,
+    "end": 0.0,
+    "type": "n/a"
+  }
+}

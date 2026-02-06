@@ -1,0 +1,17 @@
+{
+  "pid": "o000",
+  "age": 35.0,
+  "height": 1.83,
+  "weight": 85.72,
+  "gender": "M",
+  "high_blood_pressure": 0,
+  "coronary_artery_disease": 0,
+  "diabetes": 0,
+  "arrythmia": 0,
+  "previous_heart_attack": 0,
+  "previous_stroke": 0,
+  "heart_failure": 0,
+  "aortic_stenosis": 0,
+  "valvular_heart_disease": 0,
+  "other_cv_diseases": 0
+}
